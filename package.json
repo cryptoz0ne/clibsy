@@ -1,0 +1,60 @@
+{
+  "name": "clibsy",
+  "version": "0.0.1",
+  "description": "Server used to build out and demonstrate Clibsy APIs.",
+  "homepage": "http://www.clibsy.com",
+  "private": "true",
+  "main": "bin/www.js",
+  "author": {
+    "name": "Joe Kramer",
+    "email": "joe@clibsy.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://gitlab.com:clibsy/clibsy.com.git"
+  },
+  "bugs": {
+    "email": "joe@clibsy.com"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.2.1",
+    "continuation-local-storage": "^3.1.4",
+    "debug": "^2.2.0",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "formidable": "^1.0.17",
+    "jwt-simple": "^0.3.1",
+    "mv": "^2.1.1",
+    "mysql": "^2.9.0",
+    "passport": "^0.3.0",
+    "passport-http-bearer": "^1.0.1",
+    "passport-local": "^1.0.0",
+    "random-js": "^1.0.5",
+    "sequelize": "^3.8.0"
+  },
+  "devDependencies": {
+    "apidoc": "^0.13.1",
+    "chai": "^3.2.0",
+    "chai-as-promised": "^5.1.0",
+    "chai-passport-strategy": "^0.2.0",
+    "istanbul": "^0.3.19",
+    "mocha": "^2.3.2",
+    "sinon": "^1.16.1",
+    "sinon-chai": "^2.8.0",
+    "supertest": "^1.1.0"
+  },
+  "scripts": {
+    "start": "node ./bin/www.js",
+    "test": "make test"
+  },
+  "keywords": [
+    "clibsy",
+    "api"
+  ],
+  "readme": "Clibsy server for website and APIs.\n",
+  "readmeFilename": "README.md",
+  "//": [
+    "COMMENT SECTION:",
+    "Add 'url' into bugs with link to bug tracker"
+  ]
+}

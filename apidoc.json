@@ -1,0 +1,22 @@
+{
+  "name": "Clibsy",
+  "version": "1.0.0",
+  "description": "Clibsy API Development Project",
+  "title": "Clibsy API",
+  "url" : "https://api.clibsy.com/v1",
+  "header": {
+    "title": "GENERAL"
+  },
+  "order": [
+    "Authentication",
+    "User",
+    "Song",
+    "Contact",
+    "Message",
+    "Project"
+  ],
+  "template": {
+  	"withCompare": true,
+  	"withGenerator": true
+  }
+}
