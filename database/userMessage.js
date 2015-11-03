@@ -1,13 +1,19 @@
+/*******************************************************************************
+ * Copyright (c) 2015-2016 Clibsy, LLC -- All rights reserved
+ *
+ * Unauthorized copying of this file, via any medium, is strictly prohibited.
+ * Copying or distributing requires the express permission of Clibsy, LLC.
+ *
+ * PROJECT: clibsy.com
+ *
+ * FILE: userMessage.js
+ *
+ * DESCRIPTION: Definition of the user_message table model used by SequelizeJS
+ *              to map objects.
+ *
+ * AUTHOR: Joe Kramer joe@clibsy.com 2015/10/18
+ ******************************************************************************/
 'use strict';
-
-//------------------------------------------------------------------------------
-// FILE: userMessage.js
-//
-// DESCRIPTION: Definition of the user_message table model used by SequelizeJS
-//              to map objects.
-//
-// © 2015 Clibsy LLC
-//------------------------------------------------------------------------------
 
 module.exports = function(sequelize, DataTypes) {
     var UserMessage = sequelize.define('UserMessage', {
@@ -39,6 +45,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         classMethods: {
             associate: function(models) {
+                // user_id and message_id foreign key references handled by through table definition
             }
         },
         instanceMethods: {
