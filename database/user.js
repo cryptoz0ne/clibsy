@@ -206,7 +206,7 @@ module.exports = function(sequelize, DataTypes) {
                 User.hasMany(models.Address,       { as: 'Addresses', foreignKey: 'user_id' });
             //  User.belongsToMany(User,           { as: 'Followers', foreignKey:'follower', through: { model: models.Follower,   unique: true } });
             //  User.belongsToMany(User,           { as: 'Followees', foreignKey:'followee', through: { model: models.Follower,   unique: true } });
-            //  User.belongsToMany(models.Message, { as: 'Messages',  foreignKey:'message_id', through: { model: models.UserMessage, unique: true } });
+                User.belongsToMany(models.Message, { as: 'Messages',  foreignKey:'message_id', through: { model: models.UserMessage, unique: true } });
             },
             // Generate a hash for the given data (password)
             generateHash: function(data) {
