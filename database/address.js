@@ -1,13 +1,19 @@
+/*******************************************************************************
+ * Copyright (c) 2015-2016 Clibsy, LLC -- All rights reserved
+ *
+ * Unauthorized copying of this file, via any medium, is strictly prohibited.
+ * Copying or distributing requires the express permission of Clibsy, LLC.
+ *
+ * PROJECT: clibsy.com
+ *
+ * FILE: address.js
+ *
+ * DESCRIPTION: Definition of the address table model used by SequelizeJS to map
+ *              objects.
+ *
+ * AUTHOR: Joe Kramer joe@clibsy.com 2015/10/18
+ ******************************************************************************/
 'use strict';
-
-//------------------------------------------------------------------------------
-// FILE: address.js
-//
-// DESCRIPTION: Definition of the address table model used by SequelizeJS to map
-//              objects.
-//
-// © 2015 Clibsy LLC
-//------------------------------------------------------------------------------
 
 var ADDRESS_NAME_MAX_LENGTH = 100;
 var ADDRESS_LINE_MAX_LENGTH = 255;
@@ -139,7 +145,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         classMethods: {
             associate: function(models) {
-                Address.belongsTo(models.User,             { foreignKey: 'user_id' });
+                Address.belongsTo(models.User, { foreignKey: 'user_id' });
             },
             extractName: function(db, value) {
                 value = db.Sequelize.Validator.trim(db.Sequelize.Validator.toString(value));
