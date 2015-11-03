@@ -1,13 +1,19 @@
+/*******************************************************************************
+ * Copyright (c) 2015-2016 Clibsy, LLC -- All rights reserved
+ *
+ * Unauthorized copying of this file, via any medium, is strictly prohibited.
+ * Copying or distributing requires the express permission of Clibsy, LLC.
+ *
+ * PROJECT: clibsy.com
+ *
+ * FILE: song.js
+ *
+ * DESCRIPTION: Definition of the song table model used by SequelizeJS to map
+ *              objects.
+ *
+ * AUTHOR: Joe Kramer joe@clibsy.com 2015/10/18
+ ******************************************************************************/
 'use strict';
-
-//------------------------------------------------------------------------------
-// FILE: song.js
-//
-// DESCRIPTION: Definition of the song table model used by SequelizeJS to map
-//              objects.
-//
-// © 2015 Clibsy LLC
-//------------------------------------------------------------------------------
 
 var SONG_FILE_TYPE_MAX_LENGTH = 25;
 var SONG_FILE_NAME_MAX_LENGTH = 255;
