@@ -1,13 +1,19 @@
+/*******************************************************************************
+ * Copyright (c) 2015-2016 Clibsy, LLC -- All rights reserved
+ *
+ * Unauthorized copying of this file, via any medium, is strictly prohibited.
+ * Copying or distributing requires the express permission of Clibsy, LLC.
+ *
+ * PROJECT: clibsy.com
+ *
+ * FILE: user.js
+ *
+ * DESCRIPTION: Definition of the user table model used by SequelizeJS to map
+ *              objects.
+ *
+ * AUTHOR: Joe Kramer joe@clibsy.com 2015/10/18
+ ******************************************************************************/
 'use strict';
-
-//------------------------------------------------------------------------------
-// FILE: user.js
-//
-// DESCRIPTION: Definition of the user table model used by SequelizeJS to map
-//              objects.
-//
-// © 2015 Clibsy LLC
-//------------------------------------------------------------------------------
 
 // Dependency Modules
 var bcrypt = require('bcryptjs');
@@ -200,9 +206,9 @@ module.exports = function(sequelize, DataTypes) {
                 User.hasMany(models.Address,       { as: 'Addresses', foreignKey: 'user_id' });
             //  User.belongsToMany(User,           { as: 'Followers', foreignKey:'follower', through: { model: models.Follower,   unique: true } });
             //  User.belongsToMany(User,           { as: 'Followees', foreignKey:'followee', through: { model: models.Follower,   unique: true } });
-                User.belongsToMany(models.Message, { as: 'Messages',  foreignKey:'message_id', through: { model: models.UserMessage, unique: true } });
+            //  User.belongsToMany(models.Message, { as: 'Messages',  foreignKey:'message_id', through: { model: models.UserMessage, unique: true } });
             },
-            // Generate a hash for the given data (passcode or PIN)
+            // Generate a hash for the given data (password)
             generateHash: function(data) {
                 return bcrypt.hashSync(data, bcrypt.genSaltSync(GEN_SALT_ROUNDS), null);
             },
