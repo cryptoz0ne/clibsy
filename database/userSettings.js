@@ -1,13 +1,19 @@
+/*******************************************************************************
+ * Copyright (c) 2015-2016 Clibsy, LLC -- All rights reserved
+ *
+ * Unauthorized copying of this file, via any medium, is strictly prohibited.
+ * Copying or distributing requires the express permission of Clibsy, LLC.
+ *
+ * PROJECT: clibsy.com
+ *
+ * FILE: userSettings.js
+ *
+ * DESCRIPTION: Definition of the user_settings table model used by SequelizeJS
+ *              to map objects.
+ *
+ * AUTHOR: Joe Kramer joe@clibsy.com 2015/10/18
+ ******************************************************************************/
 'use strict';
-
-//------------------------------------------------------------------------------
-// FILE: userSettings.js
-//
-// DESCRIPTION: Definition of the user_settings table model used by SequelizeJS
-//              to map objects.
-//
-// © 2015 Clibsy LLC
-//------------------------------------------------------------------------------
 
 module.exports = function(sequelize, DataTypes) {
     var UserSettings = sequelize.define('UserSettings', {
@@ -28,8 +34,9 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             defaultValue: true
         },
+        // TODO: create table/foreign key?
         notify_method: {
-            type: DataTypes.ENUM, // Another table foreign key?
+            type: DataTypes.INT,
             allowNull: false,
             defaultValue: 0,
             validate: {

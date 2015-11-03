@@ -1,13 +1,19 @@
+/*******************************************************************************
+ * Copyright (c) 2015-2016 Clibsy, LLC -- All rights reserved
+ *
+ * Unauthorized copying of this file, via any medium, is strictly prohibited.
+ * Copying or distributing requires the express permission of Clibsy, LLC.
+ *
+ * PROJECT: clibsy.com
+ *
+ * FILE: userProfile.js
+ *
+ * DESCRIPTION: Definition of the user_profile table model used by SequelizeJS
+ *              to map objects.
+ *
+ * AUTHOR: Joe Kramer joe@clibsy.com 2015/10/18
+ ******************************************************************************/
 'use strict';
-
-//------------------------------------------------------------------------------
-// FILE: userProfile.js
-//
-// DESCRIPTION: Definition of the user_profile table model used by SequelizeJS
-//              to map objects.
-//
-// © 2015 Clibsy LLC
-//------------------------------------------------------------------------------
 
 var USER_PROFILE_OCCUPATION_MAX_LENGTH = 100;
 var USER_PROFILE_STAGE_NAME_MAX_LENGTH = 255;
@@ -29,8 +35,9 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
             }
         },
+        // TODO: create table/foreign key?
         acct_level: {
-            type: DataTypes.ENUM, // Another table foreign key?
+            type: DataTypes.INT,
             allowNull: false,
             defaultValue: 0,
             validate: {
@@ -54,8 +61,9 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
             }
         },
+        // TODO: create table/foreign key to handle country codes
         country: {
-            type: DataTypes.ENUM, // Another table foreign key?
+            type: DataTypes.BIGINT,
             allowNull: true,
             defaultValue: null,
             validate: {
@@ -68,16 +76,16 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
             }
         },
-        company_id: {
-            type: DataTypes.BIGINT.UNSIGNED,
-            allowNull: true,
-            defaultValue: null,
-            validate: {
-            }
-// company	        STRING(255)
-// company_image	STRING(255)
-// company_country	ENUM/FRGN KEY
-        },
+        // company_id: {
+        //     type: DataTypes.BIGINT.UNSIGNED,
+        //     allowNull: true,
+        //     defaultValue: null,
+        //     validate: {
+        //     }
+        // },
+        //    company           STRING(255)
+        //    company_image     STRING(255)
+        //    company_country   ENUM/FRGN KEY
         default_address: {
             type: DataTypes.BIGINT.UNSIGNED,
             allowNull: true,
@@ -113,6 +121,7 @@ module.exports = function(sequelize, DataTypes) {
         classMethods: {
             associate: function(models) {
                 // user_id foreign key reference handled above in field definition
+            //  UserProfile.belongsTo(models.Company, { foreignKey: 'company_id' });
             }
         },
         instanceMethods: {
