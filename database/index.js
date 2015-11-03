@@ -1,6 +1,20 @@
+/*******************************************************************************
+ * Copyright (c) 2015-2016 Clibsy, LLC -- All rights reserved
+ *
+ * Unauthorized copying of this file, via any medium, is strictly prohibited.
+ * Copying or distributing requires the express permission of Clibsy, LLC.
+ *
+ * PROJECT: clibsy.com
+ *
+ * FILE: index.js
+ *
+ * DESCRIPTION: Creates and configures the SequelizeJS instance used to
+ *              communicate with the database; pulls in, defines and associates
+ *              all table models of the database.
+ *
+ * AUTHOR: Joe Kramer joe@clibsy.com 2015/10/18
+ ******************************************************************************/
 'use strict';
-
-// database.js
 
 // Native modules
 var fs   = require('fs');
@@ -93,12 +107,6 @@ sequelize.Validator.extend('toPhone', function(number, country) {
         return normalized[0];
     else
         return null;
-});
-
-// add while loop promise to the Promises
-sequelize.Promise.while = sequelize.Promise.method(function(condition, action) {
-    if (!condition()) return;
-    return action().then(sequelize.Promise.while.bind(null, condition, action));
 });
 
 db.sequelize = sequelize;
