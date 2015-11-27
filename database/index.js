@@ -1,19 +1,19 @@
-/*******************************************************************************
- * Copyright (c) 2015-2016 Clibsy, LLC -- All rights reserved
- *
- * Unauthorized copying of this file, via any medium, is strictly prohibited.
- * Copying or distributing requires the expressed permission of Clibsy, LLC.
- *
- * PROJECT: clibsy.com
- *
- * FILE: index.js
- *
- * DESCRIPTION: Creates and configures the SequelizeJS instance used to
- *              communicate with the database; pulls in, defines and associates
- *              all table models of the database.
- *
- * AUTHOR: Joe Kramer joe@clibsy.com 2015/10/18
- ******************************************************************************/
+//******************************************************************************
+// Copyright (c) 2015-2016 Clibsy, LLC -- All rights reserved
+//
+// Unauthorized copying of this file, via any medium, is strictly prohibited.
+// Copying or distributing requires the expressed permission of Clibsy, LLC.
+//
+// PROJECT: clibsy.com
+//
+// FILE: index.js
+//
+// DESCRIPTION: Creates and configures the SequelizeJS instance used to
+//              communicate with the database; pulls in, defines and associates
+//              all table models of the database.
+//
+// AUTHOR: Joe Kramer joe@clibsy.com 2015/10/18
+//******************************************************************************
 'use strict';
 
 // Native modules
@@ -22,7 +22,7 @@ var path = require('path');
 
 // Dependency modules
 var Sequelize = require('sequelize');
-var cls       = require('continuation-local-storage');
+//  cls       = require('continuation-local-storage');
 var phone     = require('phone');
 
 // Local modules
@@ -103,10 +103,12 @@ sequelize.Validator.extend('isPhone', function(number, country) {
 
 sequelize.Validator.extend('toPhone', function(number, country) {
     var normalized = phone(number, country);
-    if (normalized.length > 0)
+    if (normalized.length > 0) {
         return normalized[0];
-    else
+    }
+    else {
         return null;
+    }
 });
 
 db.sequelize = sequelize;

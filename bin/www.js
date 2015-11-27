@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+//******************************************************************************
+// Copyright (c) 2015-2016 Clibsy, LLC -- All rights reserved
+//
+// Unauthorized copying of this file, via any medium, is strictly prohibited.
+// Copying or distributing requires the expressed permission of Clibsy, LLC.
+//
+// PROJECT: clibsy.com
+//
+// FILE: www.js
+//
+// DESCRIPTION: {{description}}
+//
+// AUTHOR: Joe Kramer joe@clibsy.com 2015/10/18
+//******************************************************************************
 
 var http = require('http');
 

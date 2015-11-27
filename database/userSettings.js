@@ -1,22 +1,23 @@
-/*******************************************************************************
- * Copyright (c) 2015-2016 Clibsy, LLC -- All rights reserved
- *
- * Unauthorized copying of this file, via any medium, is strictly prohibited.
- * Copying or distributing requires the expressed permission of Clibsy, LLC.
- *
- * PROJECT: clibsy.com
- *
- * FILE: userSettings.js
- *
- * DESCRIPTION: Definition of the user_settings table model used by SequelizeJS
- *              to map objects.
- *
- * AUTHOR: Joe Kramer joe@clibsy.com 2015/10/18
- ******************************************************************************/
+//******************************************************************************
+// Copyright (c) 2015-2016 Clibsy, LLC -- All rights reserved
+//
+// Unauthorized copying of this file, via any medium, is strictly prohibited.
+// Copying or distributing requires the expressed permission of Clibsy, LLC.
+//
+// PROJECT: clibsy.com
+//
+// FILE: userSettings.js
+//
+// DESCRIPTION: Definition of the user_settings table model used by SequelizeJS
+//              to map objects.
+//
+// AUTHOR: Joe Kramer joe@clibsy.com 2015/10/18
+//******************************************************************************
 'use strict';
 
 module.exports = function(sequelize, DataTypes) {
     var UserSettings = sequelize.define('UserSettings', {
+        /*eslint-disable camelcase, new-cap */
         user_id: {
             type: DataTypes.BIGINT.UNSIGNED,
             primaryKey: true,
@@ -52,6 +53,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             defaultValue: true
         }
+        /*eslint-enable camelcase, new-cap */
     }, {
         // timestamps: true,        // defaulted globally
         // createdAt:  true,
@@ -64,7 +66,7 @@ module.exports = function(sequelize, DataTypes) {
         hooks: {
         },
         classMethods: {
-            associate: function(models) {
+            associate: function(models) { // eslint-disable-line no-unused-vars
                 // user_id foreign key reference handled above in field definition
             }
         },

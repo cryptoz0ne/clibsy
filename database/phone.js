@@ -1,20 +1,20 @@
-/*******************************************************************************
- * Copyright (c) 2015-2016 Clibsy, LLC -- All rights reserved
- *
- * Unauthorized copying of this file, via any medium, is strictly prohibited.
- * Copying or distributing requires the expressed permission of Clibsy, LLC.
- *
- * PROJECT: clibsy.com
- *
- * FILE: phone.js
- *
- * DESCRIPTION: Definition of the phone table model used by SequelizeJS to map
- *              objects.
- *
- *              http://www.itu.int/ITU-T/recommendations/rec.aspx?rec=E.164
- *
- * AUTHOR: Joe Kramer joe@clibsy.com 2015/10/18
- ******************************************************************************/
+//******************************************************************************
+// Copyright (c) 2015-2016 Clibsy, LLC -- All rights reserved
+//
+// Unauthorized copying of this file, via any medium, is strictly prohibited.
+// Copying or distributing requires the expressed permission of Clibsy, LLC.
+//
+// PROJECT: clibsy.com
+//
+// FILE: phone.js
+//
+// DESCRIPTION: Definition of the phone table model used by SequelizeJS to map
+//              objects.
+//
+//              http://www.itu.int/ITU-T/recommendations/rec.aspx?rec=E.164
+//
+// AUTHOR: Joe Kramer joe@clibsy.com 2015/10/18
+//******************************************************************************
 'use strict';
 
 var PHONE_NAME_MAX_LENGTH = 100;
@@ -23,6 +23,7 @@ var PHONE_EXTENSION_MAX_LENGTH = 10;
 
 module.exports = function(sequelize, DataTypes) {
     var Phone = sequelize.define('Phone', {
+        /*eslint-disable camelcase, new-cap */
         phone_id: {
             type: DataTypes.BIGINT.UNSIGNED,
             primaryKey: true,
@@ -34,8 +35,10 @@ module.exports = function(sequelize, DataTypes) {
             defaultValue: null,
             validate: {
                 len: {
-                    args: [ 1, PHONE_NAME_MAX_LENGTH ],
-                    msg: 'Phone number name can be no more than ' + PHONE_NAME_MAX_LENGTH + ' characters in length'
+                    args: [1, PHONE_NAME_MAX_LENGTH],
+                    msg: 'Phone number name can be no more than '
+                         + PHONE_NAME_MAX_LENGTH
+                         + ' characters in length'
                 }
             }
         },
@@ -44,8 +47,10 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 len: {
-                    args: [ 1, PHONE_NUMBER_MAX_LENGTH ],
-                    msg: 'Phone number must be no more than ' + PHONE_NUMBER_MAX_LENGTH + ' digits in length'
+                    args: [1, PHONE_NUMBER_MAX_LENGTH],
+                    msg: 'Phone number must be no more than '
+                         + PHONE_NUMBER_MAX_LENGTH
+                         + ' digits in length'
                 }
             }
         },
@@ -55,14 +60,17 @@ module.exports = function(sequelize, DataTypes) {
             defaultValue: null,
             validate: {
                 len: {
-                    args: [ 1, PHONE_EXTENSION_MAX_LENGTH ],
-                    msg: 'Phone number extension can be no more than ' + PHONE_EXTENSION_MAX_LENGTH + ' digits in length'
+                    args: [1, PHONE_EXTENSION_MAX_LENGTH],
+                    msg: 'Phone number extension can be no more than '
+                         + PHONE_EXTENSION_MAX_LENGTH
+                         + ' digits in length'
                 },
                 isNumeric: {
                     msg: 'Phone number extension can only contain numeric digits'
                 }
             }
         }
+        /*eslint-enable camelcase, new-cap */
     }, {
         // timestamps: true,      // defaulted globally
         // createdAt:  true,
@@ -74,19 +82,22 @@ module.exports = function(sequelize, DataTypes) {
         },
         classMethods: {
             associate: function(models) {
-                Phone.belongsTo(models.User, { foreignKey: 'user_id' });
+                Phone.belongsTo(models.User,    { foreignKey: 'user_id' });
+                Phone.belongsTo(models.Contact, { foreignKey: 'contact_id' });
             },
             extractName: function(db, value) {
                 value = db.Sequelize.Validator.trim(db.Sequelize.Validator.toString(value));
-                if (db.Sequelize.Validator.equals(value, ''))
+                if (db.Sequelize.Validator.equals(value, '')) {
                     value = null;
+                }
 
                 return value;
             },
             extractExtension: function(db, value) {
                 value = db.Sequelize.Validator.trim(db.Sequelize.Validator.toString(value));
-                if (db.Sequelize.Validator.equals(value, ''))
+                if (db.Sequelize.Validator.equals(value, '')) {
                     value = null;
+                }
 
                 return value;
             },
