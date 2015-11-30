@@ -18,7 +18,6 @@
 var ADDRESS_NAME_MAX_LENGTH = 100;
 var ADDRESS_LINE_MAX_LENGTH = 255;
 var ADDRESS_LOCALITY_MAX_LENGTH = 100;
-var ADDRESS_REGION_MAX_LENGTH = 10;
 var ADDRESS_POSTALCODE_MAX_LENGTH = 10;
 
 module.exports = function(sequelize, DataTypes) {
@@ -118,18 +117,7 @@ module.exports = function(sequelize, DataTypes) {
                 }
             }
         },
-        region: { // state
-            type: DataTypes.STRING( ADDRESS_REGION_MAX_LENGTH ),
-            allowNull: false,
-            validate: {
-                len: {
-                    args: [1, ADDRESS_REGION_MAX_LENGTH],
-                    msg: 'Region (state) must be no more than '
-                         + ADDRESS_REGION_MAX_LENGTH
-                         + ' characters in length'
-                }
-            }
-        },
+        // Region (state) is recorded through association
         sub_region: { // county, ex. Hudson, Morris, Hamilton, etc
             type: DataTypes.STRING( ADDRESS_REGION_MAX_LENGTH ),
             allowNull: true,
@@ -145,7 +133,8 @@ module.exports = function(sequelize, DataTypes) {
         },
         postalCode: {
             type: DataTypes.STRING( ADDRESS_POSTALCODE_MAX_LENGTH ),
-            allowNull: false,
+            allowNull: true,
+            defaultValue: null,
             validate: {
                 len: {
                     args: [1, ADDRESS_POSTALCODE_MAX_LENGTH],
@@ -167,6 +156,8 @@ module.exports = function(sequelize, DataTypes) {
         },
         classMethods: {
             associate: function(models) {
+                Address.belongsTo(models.Country, { foreignKey: 'country_id' });
+                Address.belongsTo(models.Region,  { foreignKey: 'region_id' });
                 Address.belongsTo(models.User,    { foreignKey: 'user_id' });
                 Address.belongsTo(models.Contact, { foreignKey: 'contact_id' });
             },
