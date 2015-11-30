@@ -3,6 +3,8 @@
 
 # Text Editor/Environment Files
 #################################################
+*.sublime-project
+*.sublime-workspace
 
 # Node.js Files
 #################################################
