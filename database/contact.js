@@ -15,6 +15,10 @@
 //******************************************************************************
 'use strict';
 
+var CONTACT_NAME_MAX_LENGTH = 100;
+var CONTACT_EMAIL_MAX_LENGTH = 255;
+var CONTACT_WEBSITE_MAX_LENGTH = 255;
+
 module.exports = function(sequelize, DataTypes) {
     var Contact = sequelize.define('Contact', {
         /*eslint-disable camelcase, new-cap */
@@ -22,6 +26,71 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.BIGINT.UNSIGNED,
             primaryKey: true,
             autoIncrement: true
+        },
+        given_name: {
+            type: DataTypes.STRING( CONTACT_NAME_MAX_LENGTH ),
+            allowNull: true,
+            defaultValue: null,
+            validate: {
+                len: {
+                    args: [1, CONTACT_NAME_MAX_LENGTH],
+                    msg: 'Contact name can be no more than '
+                         + CONTACT_NAME_MAX_LENGTH
+                         + ' characters in length'
+                }
+            }
+        },
+        family_name: {
+            type: DataTypes.STRING( CONTACT_NAME_MAX_LENGTH ),
+            allowNull: true,
+            defaultValue: null,
+            validate: {
+                len: {
+                    args: [1, CONTACT_NAME_MAX_LENGTH],
+                    msg: 'Contact name can be no more than '
+                         + CONTACT_NAME_MAX_LENGTH
+                         + ' characters in length'
+                }
+            }
+        },
+        email: { // TODO: extend to multiple?
+            type: DataTypes.STRING( CONTACT_EMAIL_MAX_LENGTH ),
+            allowNull: true,
+            defaultValue: null,
+            validate: {
+                len: {
+                    args: [1, CONTACT_EMAIL_MAX_LENGTH],
+                    msg: 'Email address can be no more than '
+                         + CONTACT_EMAIL_MAX_LENGTH
+                         + ' characters in length'
+                },
+                isEmail: {
+                    msg: 'Email address has an invalid format'
+                }
+            }
+        },
+        website: {
+            type: DataTypes.STRING( CONTACT_WEBSITE_MAX_LENGTH ),
+            allowNull: true,
+            defaultValue: null,
+            validate: {
+                len: {
+                    args: [1, CONTACT_WEBSITE_MAX_LENGTH],
+                    msg: 'Website URL can be no more than '
+                         + CONTACT_WEBSITE_MAX_LENGTH
+                         + ' characters in length'
+                },
+                isUrl: {
+                    msg: 'Website URL has an invalid format'
+                }
+            }
+        },
+        note: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+            defaultValue: null,
+            validate: {
+            }
         }
         /*eslint-enable camelcase, new-cap */
     }, {
@@ -35,7 +104,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         classMethods: {
             associate: function(models) {
-                Contact.belongsTo(models.User,  { foreignKey: 'user_id' });
+                Contact.belongsTo(models.User,  { as: 'Owner',     foreignKey: 'user_id' });
                 Contact.hasMany(models.Phone,   { as: 'Phones',    foreignKey: 'contact_id' });
                 Contact.hasMany(models.Address, { as: 'Addresses', foreignKey: 'contact_id' });
             },
