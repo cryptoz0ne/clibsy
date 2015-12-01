@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
     var Contact = sequelize.define('Contact', {
         /*eslint-disable camelcase, new-cap */
         contact_id: {
-            type: DataTypes.BIGINT.UNSIGNED,
+            type: DataTypes.BIGINT, // .UNSIGNED
             primaryKey: true,
             autoIncrement: true
         },

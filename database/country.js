@@ -27,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
     var Country = sequelize.define('Country', {
         /*eslint-disable camelcase, new-cap */
         country_id: {
-            type: DataTypes.BIGINT.UNSIGNED,
+            type: DataTypes.BIGINT, // .UNSIGNED
             primaryKey: true,
             autoIncrement: true
         },

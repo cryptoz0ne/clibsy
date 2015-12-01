@@ -3,7 +3,6 @@
 //
 // Unauthorized copying of this file, via any medium, is strictly prohibited.
 // Copying or distributing requires the expressed permission of Clibsy, LLC.
-
 //
 // PROJECT: clibsy.com
 //

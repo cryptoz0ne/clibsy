@@ -21,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
     var Message = sequelize.define('Message', {
         /*eslint-disable camelcase, new-cap */
         message_id: {
-            type: DataTypes.BIGINT.UNSIGNED,
+            type: DataTypes.BIGINT, // .UNSIGNED
             primaryKey: true,
             autoIncrement: true
         },
@@ -46,15 +46,11 @@ module.exports = function(sequelize, DataTypes) {
         // updatedAt:  true,
         paranoid: true,
         // freezeTableName: true, // defaulted globally
-        tableName: 'song',        // force table name to this value
-        validate: {
-        },
-        hooks: {
-        },
+        tableName: 'message',     // force table name to this value
         classMethods: {
             associate: function(models) {
                 /*eslint-disable max-len */
-                Message.belongsToMany(models.User, { as: 'Sender',  foreignKey:'user_id', through: { model: models.UserMessage, unique: true } });
+                Message.belongsToMany(models.User, { as: 'Sender', foreignKey:'user_id', through: { model: models.UserMessage, unique: true } });
                 /*eslint-enable max-len */
             }
         },

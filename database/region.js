@@ -17,14 +17,15 @@
 //******************************************************************************
 'use strict';
 
-var COUNTRY_SUBDIVISION_NAME_MAX_LENGTH = 255;
-var COUNTRY_SUBDIVISION_ABBR_MAX_LENGTH = 10;
+var REGION_NAME_MAX_LENGTH = 255;
+var REGION_ABBR_MAX_LENGTH = 10;
+var REGION_CODE_MAX_LENGTH = 10;
 
 module.exports = function(sequelize, DataTypes) {
-    var CountrySubdivision = sequelize.define('CountrySubdivision', {
+    var Region = sequelize.define('Region', {
         /*eslint-disable camelcase, new-cap */
         region_id: {
-            type: DataTypes.BIGINT.UNSIGNED,
+            type: DataTypes.BIGINT, // .UNSIGNED
             primaryKey: true,
             autoIncrement: true
         },
@@ -65,7 +66,7 @@ module.exports = function(sequelize, DataTypes) {
             }
         },
         category: {
-            type: DataTypes.ENUM,
+            type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
             }
@@ -90,5 +91,5 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
 
-    return CountrySubdivision;
+    return Region;
 };

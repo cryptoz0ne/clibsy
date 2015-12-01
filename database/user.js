@@ -34,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define('User', {
         /*eslint-disable camelcase, new-cap */
         user_id: {
-            type: DataTypes.BIGINT.UNSIGNED,
+            type: DataTypes.BIGINT, // .UNSIGNED
             primaryKey: true,
             autoIncrement: true
         },
@@ -84,10 +84,10 @@ module.exports = function(sequelize, DataTypes) {
                     msg: 'Phone number can be no more than '
                          + USER_PHONE_MAX_LENGTH
                          + ' digits in length'
-                },
-                isPhone: {
-                    args: this.countryCode,
-                    msg: 'Phone number has an invalid format for the associated country'
+                // },
+                // isPhone: {
+                //     args: this.countryCode,
+                //     msg: 'Phone number has an invalid format for the associated country'
                 }
             }
         },

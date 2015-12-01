@@ -18,13 +18,14 @@
 var ADDRESS_NAME_MAX_LENGTH = 100;
 var ADDRESS_LINE_MAX_LENGTH = 255;
 var ADDRESS_LOCALITY_MAX_LENGTH = 100;
+var ADDRESS_REGION_MAX_LENGTH = 100;
 var ADDRESS_POSTALCODE_MAX_LENGTH = 10;
 
 module.exports = function(sequelize, DataTypes) {
     var Address = sequelize.define('Address', {
         /*eslint-disable camelcase, new-cap */
         address_id: {
-            type: DataTypes.BIGINT.UNSIGNED,
+            type: DataTypes.BIGINT, // .UNSIGNED
             primaryKey: true,
             autoIncrement: true
         },

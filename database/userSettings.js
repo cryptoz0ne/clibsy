@@ -19,10 +19,10 @@ module.exports = function(sequelize, DataTypes) {
     var UserSettings = sequelize.define('UserSettings', {
         /*eslint-disable camelcase, new-cap */
         user_id: {
-            type: DataTypes.BIGINT.UNSIGNED,
+            type: DataTypes.BIGINT, // .UNSIGNED
             primaryKey: true,
-            references: 'users',
-            referencesKey: 'user_id',
+            model: 'users',
+            key: 'user_id',
             onDelete: 'cascade'
         },
         rcv_newsletter: {
@@ -37,7 +37,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         // TODO: create table/foreign key?
         notify_method: {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             allowNull: false,
             defaultValue: 0,
             validate: {

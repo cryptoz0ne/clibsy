@@ -23,11 +23,14 @@ var path = require('path');
 // Dependency modules
 var Sequelize = require('sequelize');
 //  cls       = require('continuation-local-storage');
-var phone     = require('phone');
+//  phone     = require('phone');
 
 // Local modules
-var env    = process.env.NODE_ENV || 'development';
-var config = require('../config/dbSettings')[env];
+var name     = process.env.DB_NAME || 'clibsy_dev';
+var username = process.env.USERNAME || 'clibsy';
+var pw       = process.env.PASSWORD || 'clibsy';
+var host     = process.env.HOST || 'localhost';
+var logging  = process.env.LOGGING || false;
 
 // -----------------------------------------------------------------------------
 // INTIALIZE & CONNECT DATABASE
@@ -38,21 +41,21 @@ var db = {};
 // Sequelize.cls = cls.createNamespace('clibsy-sequelize-namespace');
 
 // new Sequelize(database, username, password, { attributes });
-var sequelize = new Sequelize(config.database, config.username, config.password, {
-    host: config.host || 'localhost', // custom host; default: 'localhost'
-//  port: 3306,                 // custom port; default: 3306
+var sequelize = new Sequelize(name, username, pw, {
+    host: host, // custom host; default: 'localhost'
+//  port: 3306, // custom port; default: 3306
 
-    logging: config.logging,    // disable logging; default: console.log
+    logging: logging,    // disable logging; default: console.log
 
 //  maxConcurrentQueries: 100,  // max concurrent database requests; default: 50
-    dialect: 'mysql',           // the sql dialect of the database; default: 'mysql'
+    dialect: 'postgres',        // the sql dialect of the database; default: 'mysql'
 //  omitNull: true,             // disable inserting undefined values as NULL; default: false
 
     // Specify options, which are used when sequelize.define is called.
     // defining each model will be not necessary except to override setting
     define: {
         timestamps: true,       // adds timestamp attributes (updatedAt, createdAt)
-        underscored: false,
+        underscored: true,
         freezeTableName: true,  // don't pluralize model name for table name creation
         syncOnAssociation: true,
         engine: 'InnoDB',
@@ -97,19 +100,19 @@ Object.keys(db).forEach(function(modelName) {
 });
 
 // add validator functions for phone
-sequelize.Validator.extend('isPhone', function(number, country) {
-    return phone(number, country).length > 0;
-});
+// sequelize.Validator.extend('isPhone', function(number, country) {
+//     return phone(number, country).length > 0;
+// });
 
-sequelize.Validator.extend('toPhone', function(number, country) {
-    var normalized = phone(number, country);
-    if (normalized.length > 0) {
-        return normalized[0];
-    }
-    else {
-        return null;
-    }
-});
+// sequelize.Validator.extend('toPhone', function(number, country) {
+//     var normalized = phone(number, country);
+//     if (normalized.length > 0) {
+//         return normalized[0];
+//     }
+//     else {
+//         return null;
+//     }
+// });
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

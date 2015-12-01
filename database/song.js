@@ -28,7 +28,7 @@ module.exports = function(sequelize, DataTypes) {
     var Song = sequelize.define('Song', {
         /*eslint-disable camelcase, new-cap */
         song_id: {
-            type: DataTypes.BIGINT.UNSIGNED,
+            type: DataTypes.BIGINT, // .UNSIGNED
             primaryKey: true,
             autoIncrement: true
         },

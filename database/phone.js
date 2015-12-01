@@ -25,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
     var Phone = sequelize.define('Phone', {
         /*eslint-disable camelcase, new-cap */
         phone_id: {
-            type: DataTypes.BIGINT.UNSIGNED,
+            type: DataTypes.BIGINT, // .UNSIGNED
             primaryKey: true,
             autoIncrement: true
         },
