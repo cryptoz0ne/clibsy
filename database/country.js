@@ -109,6 +109,7 @@ module.exports = function(sequelize, DataTypes) {
                 Country.hasMany(models.Region,      { as: 'regions',   foreignKey: 'country_id' });
                 Country.basMany(models.UserProfile, { as: 'profiles',  foreignKey: 'country_id' });
                 Country.hasMany(models.Company,     { as: 'companies', foreignKey: 'country_id' });
+                Country.hasMany(models.Group,       { as: 'groups',    foreignKey: 'country_id' });
             }
         },
         instanceMethods: {

@@ -231,6 +231,7 @@ module.exports = function(sequelize, DataTypes) {
                 User.hasMany(models.Song,        { as: 'songs',     foreignKey: 'user_id' });
             //  User.belongsToMany(User,           { as: 'followers', foreignKey:'follower',   through: { model: models.Follower,    unique: true } });
             //  User.belongsToMany(User,           { as: 'followees', foreignKey:'followee',   through: { model: models.Follower,    unique: true } });
+                User.belongsToMany(models.Group,   { as: 'groups',    foreignKey:'group_id',   through: { model: models.UserGroup,   unique: true } });
                 User.belongsToMany(models.Message, { as: 'messages',  foreignKey:'message_id', through: { model: models.UserMessage, unique: true } });
                 /*eslint-enable max-len */
             },
