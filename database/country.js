@@ -21,7 +21,6 @@ var COUNTRY_NAME_MAX_LENGTH = 255;
 var COUNTRY_ISO_NAME_MAX_LENGTH = 255;
 var COUNTRY_ISO_2_MAX_LENGTH = 2;
 var COUNTRY_ISO_3_MAX_LENGTH = 3;
-var COUNTRY_ISO_NUM_MAX_LENGTH = 3;
 
 module.exports = function(sequelize, DataTypes) {
     var Country = sequelize.define('Country', {
@@ -82,16 +81,10 @@ module.exports = function(sequelize, DataTypes) {
             }
         },
         iso_numeric: {
-            type: DataTypes.CHAR( COUNTRY_ISO_NUM_MAX_LENGTH ),
+            type: DataTypes.SMALLINT,
             allowNull: false,
             unique: true,
             validate: {
-                len: {
-                    args: [1, COUNTRY_ISO_NUM_MAX_LENGTH],
-                    msg: 'Country ISO numeric code must be '
-                         + COUNTRY_ISO_NUM_MAX_LENGTH
-                         + ' characters in length'
-                }
             }
         }
         /*eslint-enable camelcase, new-cap */
@@ -106,10 +99,9 @@ module.exports = function(sequelize, DataTypes) {
         },
         classMethods: {
             associate: function(models) {
-                Country.hasMany(models.Region,      { as: 'regions',   foreignKey: 'country_id' });
-                Country.basMany(models.UserProfile, { as: 'profiles',  foreignKey: 'country_id' });
-                Country.hasMany(models.Company,     { as: 'companies', foreignKey: 'country_id' });
-                Country.hasMany(models.Group,       { as: 'groups',    foreignKey: 'country_id' });
+                Country.hasMany(models.Region, { as: 'regions',   foreignKey: 'country_id' });
+                Country.hasMany(models.Phone,  { as: 'phones',    foreignKey: 'country_id' });
+                Country.hasMany(models.Group,  { as: 'groups',    foreignKey: 'country_id' });
             }
         },
         instanceMethods: {

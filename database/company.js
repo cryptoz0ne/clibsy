@@ -111,7 +111,6 @@ module.exports = function(sequelize, DataTypes) {
         },
         classMethods: {
             associate: function(models) {
-                Company.belongsTo(models.Country, { as: 'country', foreignKey: 'country_id' });
                 Company.hasOne(models.Address,      { as: 'address',  foreignKey: 'company_id' });
                 Company.hasOne(models.Phone,        { as: 'phone',    foreignKey: 'company_id' });
                 Company.hasMany(models.Contact,     { as: 'contacts', foreignKey: 'company_id' });

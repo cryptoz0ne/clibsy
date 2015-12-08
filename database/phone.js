@@ -82,6 +82,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         classMethods: {
             associate: function(models) {
+                Phone.belongsTo(models.Country, { foreighKey: 'country_id' });
                 Phone.belongsTo(models.User,    { foreignKey: 'user_id' });
                 Phone.belongsTo(models.Company, { foreighKey: 'company_id' });
                 Phone.belongsTo(models.Contact, { foreignKey: 'contact_id' });

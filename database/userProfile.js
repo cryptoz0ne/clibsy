@@ -94,7 +94,6 @@ module.exports = function(sequelize, DataTypes) {
             associate: function(models) {
                 // user_id foreign key reference handled above in field definition
                 UserProfile.belongsTo(models.Company, { foreignKey: 'company_id' });
-                UserProfile.belongsTo(models.Country, { foreignKey: 'country_id'});
                 UserProfile.belongsTo(models.Address, { foreignKey: 'address_id' });
                 UserProfile.belongsTo(models.Phone,   { foreignKey: 'phone_id' });
             }
