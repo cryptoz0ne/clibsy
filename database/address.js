@@ -157,9 +157,9 @@ module.exports = function(sequelize, DataTypes) {
         },
         classMethods: {
             associate: function(models) {
-                Address.belongsTo(models.Country, { foreignKey: 'country_id' });
                 Address.belongsTo(models.Region,  { foreignKey: 'region_id' });
                 Address.belongsTo(models.User,    { foreignKey: 'user_id' });
+                Address.belongsTo(models.Company, { foreignKey: 'company_id' });
                 Address.belongsTo(models.Contact, { foreignKey: 'contact_id' });
             },
             extractName: function(db, value) {

@@ -101,12 +101,14 @@ module.exports = function(sequelize, DataTypes) {
         // updatedAt:  true,
         paranoid: false,
         // freezeTableName: true, // defaulted globally
-        tableName: 'country',      // force table name to this value
+        tableName: 'country',     // force table name to this value
         validate: {
         },
         classMethods: {
             associate: function(models) {
-                Country.hasMany(models.Address,  { foreignKey: 'region_id' });
+                Country.hasMany(models.Region,      { as: 'regions',   foreignKey: 'country_id' });
+                Country.basMany(models.UserProfile, { as: 'profiles',  foreignKey: 'country_id' });
+                Country.hasMany(models.Company,     { as: 'companies', foreignKey: 'country_id' });
             }
         },
         instanceMethods: {

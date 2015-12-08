@@ -64,40 +64,8 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
             }
         },
-        // TODO: create table/foreign key to handle country codes
-        country: {
-            type: DataTypes.BIGINT,
-            allowNull: true,
-            defaultValue: null,
-            validate: {
-            }
-        },
         website: {
             type: DataTypes.STRING( USER_PROFILE_WEBSITE_MAX_LENGTH ),
-            allowNull: true,
-            defaultValue: null,
-            validate: {
-            }
-        },
-        // company_id: {
-        //     type: DataTypes.BIGINT, // .UNSIGNED
-        //     allowNull: true,
-        //     defaultValue: null,
-        //     validate: {
-        //     }
-        // },
-        //    company           STRING(255)
-        //    company_image     STRING(255)
-        //    company_country   ENUM/FRGN KEY
-        default_address: {
-            type: DataTypes.BIGINT, // .UNSIGNED
-            allowNull: true,
-            defaultValue: null,
-            validate: {
-            }
-        },
-        default_phone: {
-            type: DataTypes.BIGINT, // .UNSIGNED
             allowNull: true,
             defaultValue: null,
             validate: {
@@ -123,9 +91,12 @@ module.exports = function(sequelize, DataTypes) {
         hooks: {
         },
         classMethods: {
-            associate: function(models) { // eslint-disable-line no-unused-vars
+            associate: function(models) {
                 // user_id foreign key reference handled above in field definition
-            //  UserProfile.belongsTo(models.Company, { foreignKey: 'company_id' });
+                UserProfile.belongsTo(models.Company, { foreignKey: 'company_id' });
+                UserProfile.belongsTo(models.Country, { foreignKey: 'country_id'});
+                UserProfile.belongsTo(models.Address, { foreignKey: 'address_id' });
+                UserProfile.belongsTo(models.Phone,   { foreignKey: 'phone_id' });
             }
         },
         instanceMethods: {

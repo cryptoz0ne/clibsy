@@ -50,7 +50,7 @@ module.exports = function(sequelize, DataTypes) {
         classMethods: {
             associate: function(models) {
                 /*eslint-disable max-len */
-                Message.belongsToMany(models.User, { as: 'Sender', foreignKey:'user_id', through: { model: models.UserMessage, unique: true } });
+                Message.belongsToMany(models.User, { as: 'users', foreignKey:'user_id', through: { model: models.UserMessage, unique: true } });
                 /*eslint-enable max-len */
             }
         },

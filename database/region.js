@@ -84,7 +84,7 @@ module.exports = function(sequelize, DataTypes) {
         classMethods: {
             associate: function(models) {
                 Region.belongsTo(models.Country, { foreignKey: 'country_id' });
-                Region.hasMany(models.Address,  { foreignKey: 'region_id' });
+                Region.hasMany(models.Address,   { foreignKey: 'region_id' });
             }
         },
         instanceMethods: {

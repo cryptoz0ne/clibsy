@@ -223,15 +223,15 @@ module.exports = function(sequelize, DataTypes) {
         classMethods: {
             associate: function(models) {
                 /*eslint-disable max-len */
-                User.hasOne(models.UserProfile,    { as: 'Profile',   foreignKey: 'user_id', onDelete: 'cascade' });
-                User.hasOne(models.UserSettings,   { as: 'Settings',  foreignKey: 'user_id', onDelete: 'cascade' });
-                User.hasMany(models.Song,          { as: 'Songs',     foreignKey: 'user_id' });
-                User.hasMany(models.Contact,       { as: 'Contacts',  foreignKey: 'user_id' });
-                User.hasMany(models.Phone,         { as: 'Phones',    foreignKey: 'user_id' });
-                User.hasMany(models.Address,       { as: 'Addresses', foreignKey: 'user_id' });
-            //  User.belongsToMany(User,           { as: 'Followers', foreignKey:'follower', through: { model: models.Follower,   unique: true } });
-            //  User.belongsToMany(User,           { as: 'Followees', foreignKey:'followee', through: { model: models.Follower,   unique: true } });
-                User.belongsToMany(models.Message, { as: 'Messages',  foreignKey:'message_id', through: { model: models.UserMessage, unique: true } });
+                User.hasOne(models.UserProfile,  { as: 'profile',   foreignKey: 'user_id', onDelete: 'cascade' });
+                User.hasOne(models.UserSettings, { as: 'settings',  foreignKey: 'user_id', onDelete: 'cascade' });
+                User.hasMany(models.Address,     { as: 'addresses', foreignKey: 'user_id' });
+                User.hasMany(models.Contact,     { as: 'contacts',  foreignKey: 'user_id' });
+                User.hasMany(models.Phone,       { as: 'phones',    foreignKey: 'user_id' });
+                User.hasMany(models.Song,        { as: 'songs',     foreignKey: 'user_id' });
+            //  User.belongsToMany(User,           { as: 'followers', foreignKey:'follower',   through: { model: models.Follower,    unique: true } });
+            //  User.belongsToMany(User,           { as: 'followees', foreignKey:'followee',   through: { model: models.Follower,    unique: true } });
+                User.belongsToMany(models.Message, { as: 'messages',  foreignKey:'message_id', through: { model: models.UserMessage, unique: true } });
                 /*eslint-enable max-len */
             },
             // Generate a hash for the given data (password)
