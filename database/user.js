@@ -30,7 +30,7 @@ var USER_PROFILE_IMAGE_MAX_LENGTH = 255;
 
 var GEN_SALT_ROUNDS = 10;
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function defineUser(sequelize, DataTypes) {
     var User = sequelize.define('User', {
         /*eslint-disable camelcase, new-cap */
         user_id: {
@@ -98,7 +98,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         password: {
             type: DataTypes.VIRTUAL,
-            set: function(value) {
+            function set(value) {
                 this.setDataValue('password', value);
                 this.setDataValue('passwordHash', User.generateHash(value));
             },
@@ -212,7 +212,7 @@ module.exports = function(sequelize, DataTypes) {
         // freezeTableName: true, // defaulted globally
         tableName: 'user',        // force table name to this value
         validate: {
-            emailOrPhoneNotNull: function() {
+            function emailOrPhoneNotNull() {
                 if ((this.email === null) && (this.phone === null)) {
                     throw new Error('User account require either an email address or phone number');
                 }
@@ -221,7 +221,7 @@ module.exports = function(sequelize, DataTypes) {
         hooks: {
         },
         classMethods: {
-            associate: function(models) {
+            function associate(models) {
                 /*eslint-disable max-len */
                 User.hasOne(models.UserProfile,  { as: 'profile',   foreignKey: 'user_id', onDelete: 'cascade' });
                 User.hasOne(models.UserSettings, { as: 'settings',  foreignKey: 'user_id', onDelete: 'cascade' });
@@ -237,13 +237,13 @@ module.exports = function(sequelize, DataTypes) {
                 /*eslint-enable max-len */
             },
             // Generate a hash for the given data (password)
-            generateHash: function(data) {
+            function generateHash(data) {
                 return bcrypt.hashSync(data, bcrypt.genSaltSync(GEN_SALT_ROUNDS), null);
             },
-            extractPhone: function(db, value, countryCode) {
+            function extractPhone(db, value, countryCode) {
                 return db.Sequelize.Validator.toPhone(value, countryCode);
             },
-            extractEmail: function(db, value) {
+            function extractEmail(db, value) {
                 var validator = db.Sequelize.Validator;
 
                 value = validator.trim(validator.toString(value)).toLowerCase();
@@ -253,7 +253,7 @@ module.exports = function(sequelize, DataTypes) {
 
                 return value;
             },
-            extractFamilyName: function(db, value) {
+            function extractFamilyName(db, value) {
                 var validator = db.Sequelize.Validator;
 
                 value = validator.trim(validator.toString(value));
@@ -266,7 +266,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         instanceMethods: {
             // Validate a password against the saved password salt/hash
-            verifyPassword: function(password) {
+            function verifyPassword(password) {
                 return bcrypt.compareSync(password, this.password_hash);
             }
         }

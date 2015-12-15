@@ -17,7 +17,7 @@
 
 var USER_GROUP_ROLE_MAX_LENGTH = 100;
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function defineUserGroup(sequelize, DataTypes) {
     var UserGroup = sequelize.define('UserGroup', {
         /*eslint-disable camelcase, new-cap */
         role: {
@@ -46,7 +46,7 @@ module.exports = function(sequelize, DataTypes) {
         hooks: {
         },
         classMethods: {
-            associate: function(models) { // eslint-disable-line no-unused-vars
+            function associate(models) { // eslint-disable-line no-unused-vars
                 // user_id and group_id foreign key references handled by
                 // through table definition
             }

@@ -61,8 +61,8 @@ var sequelize = new Sequelize(name, username, pw, {
         engine: 'InnoDB',
         charset: 'utf8',
         collate: 'utf8_general_ci',
-        //classMethods: {method1: function() {}},
-        //instanceMethods: {method2: function() {}},
+        //classMethods: {method1: function () {}},
+        //instanceMethods: {method2: function () {}},
     },
 
     // define this to always force sync for models; currently set in server.js
@@ -82,17 +82,17 @@ var sequelize = new Sequelize(name, username, pw, {
 
 fs.readdirSync(__dirname)
   // filter out directory linking files ('.', '..') and this file (index.js)
-  .filter(function(file) {
+  .filter(function (file) {
     return (file.indexOf('.') !== 0) && (file !== 'index.js');
   })
   // add each model to the database model
-  .forEach(function(file) {
+  .forEach(function (file) {
     var model = sequelize.import(path.join(__dirname, file));
     db[model.name] = model;
   });
 
 // Call associate() on each of the models
-Object.keys(db).forEach(function(modelName) {
+Object.keys(db).forEach(function (modelName) {
     /* istanbul ignore else */
     if ('associate' in db[modelName]) {
         db[modelName].associate(db);
@@ -100,11 +100,11 @@ Object.keys(db).forEach(function(modelName) {
 });
 
 // add validator functions for phone
-// sequelize.Validator.extend('isPhone', function(number, country) {
+// sequelize.Validator.extend('isPhone', function (number, country) {
 //     return phone(number, country).length > 0;
 // });
 
-// sequelize.Validator.extend('toPhone', function(number, country) {
+// sequelize.Validator.extend('toPhone', function (number, country) {
 //     var normalized = phone(number, country);
 //     if (normalized.length > 0) {
 //         return normalized[0];

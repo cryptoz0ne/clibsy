@@ -17,7 +17,7 @@
 
 var MESSAGE_SUBJECT_MAX_LENGTH = 255;
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function defineMessage(sequelize, DataTypes) {
     var Message = sequelize.define('Message', {
         /*eslint-disable camelcase, new-cap */
         message_id: {
@@ -48,7 +48,7 @@ module.exports = function(sequelize, DataTypes) {
         // freezeTableName: true, // defaulted globally
         tableName: 'message',     // force table name to this value
         classMethods: {
-            associate: function(models) {
+            function associate(models) {
                 /*eslint-disable max-len */
                 Message.belongsToMany(models.User, { as: 'users', foreignKey:'user_id', through: { model: models.UserMessage, unique: true } });
                 /*eslint-enable max-len */

@@ -15,7 +15,7 @@
 //******************************************************************************
 'use strict';
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function defineSongInstrument(sequelize, DataTypes) {
     var SongInstrument = sequelize.define('SongInstrument', {
         /*eslint-disable camelcase, new-cap */
         /*eslint-enable camelcase, new-cap */
@@ -31,7 +31,7 @@ module.exports = function(sequelize, DataTypes) {
         hooks: {
         },
         classMethods: {
-            associate: function(models) { // eslint-disable-line no-unused-vars
+            function associate(models) { // eslint-disable-line no-unused-vars
                 // song_id and instrument_id foreign key references handled by
                 // through table definition
             }

@@ -19,7 +19,7 @@ var USER_PROFILE_OCCUPATION_MAX_LENGTH = 100;
 var USER_PROFILE_STAGE_NAME_MAX_LENGTH = 255;
 var USER_PROFILE_WEBSITE_MAX_LENGTH = 255;
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function defineUserProfile(sequelize, DataTypes) {
     var UserProfile = sequelize.define('UserProfile', {
         /*eslint-disable camelcase, new-cap */
         user_id: {
@@ -91,7 +91,7 @@ module.exports = function(sequelize, DataTypes) {
         hooks: {
         },
         classMethods: {
-            associate: function(models) {
+            function associate(models) {
                 // user_id foreign key reference handled above in field definition
                 UserProfile.belongsTo(models.Company, { foreignKey: 'company_id' });
                 UserProfile.belongsTo(models.Address, { foreignKey: 'address_id' });

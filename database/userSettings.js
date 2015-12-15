@@ -15,7 +15,7 @@
 //******************************************************************************
 'use strict';
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function defineUserSettings(sequelize, DataTypes) {
     var UserSettings = sequelize.define('UserSettings', {
         /*eslint-disable camelcase, new-cap */
         user_id: {
@@ -66,7 +66,7 @@ module.exports = function(sequelize, DataTypes) {
         hooks: {
         },
         classMethods: {
-            associate: function(models) { // eslint-disable-line no-unused-vars
+            function associate(models) { // eslint-disable-line no-unused-vars
                 // user_id foreign key reference handled above in field definition
             }
         },

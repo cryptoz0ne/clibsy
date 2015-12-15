@@ -17,7 +17,7 @@
 
 var INSTRUMENT_NAME_MAX_LENGTH = 100;
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function defineInstrument(sequelize, DataTypes) {
     var Instrument = sequelize.define('Instrument', {
         /*eslint-disable camelcase, new-cap */
         instrument_id: {
@@ -56,7 +56,7 @@ module.exports = function(sequelize, DataTypes) {
         validate: {
         },
         classMethods: {
-            associate: function(models) {
+            function associate(models) {
                 Instrument.belongsToMany(models.Songs, { as: 'songs', foreignKey:'instrument_id', through: { model: models.SongInstrument, unique: true } });
             }
         },

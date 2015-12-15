@@ -21,7 +21,7 @@ var PHONE_NAME_MAX_LENGTH = 100;
 var PHONE_NUMBER_MAX_LENGTH = 15;
 var PHONE_EXTENSION_MAX_LENGTH = 10;
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function definePhone(sequelize, DataTypes) {
     var Phone = sequelize.define('Phone', {
         /*eslint-disable camelcase, new-cap */
         phone_id: {
@@ -81,13 +81,13 @@ module.exports = function(sequelize, DataTypes) {
         validate: {
         },
         classMethods: {
-            associate: function(models) {
+            function associate(models) {
                 Phone.belongsTo(models.Country, { foreighKey: 'country_id' });
                 Phone.belongsTo(models.User,    { foreignKey: 'user_id' });
                 Phone.belongsTo(models.Company, { foreighKey: 'company_id' });
                 Phone.belongsTo(models.Contact, { foreignKey: 'contact_id' });
             },
-            extractName: function(db, value) {
+            function extractName(db, value) {
                 value = db.Sequelize.Validator.trim(db.Sequelize.Validator.toString(value));
                 if (db.Sequelize.Validator.equals(value, '')) {
                     value = null;
@@ -95,7 +95,7 @@ module.exports = function(sequelize, DataTypes) {
 
                 return value;
             },
-            extractExtension: function(db, value) {
+            function extractExtension(db, value) {
                 value = db.Sequelize.Validator.trim(db.Sequelize.Validator.toString(value));
                 if (db.Sequelize.Validator.equals(value, '')) {
                     value = null;

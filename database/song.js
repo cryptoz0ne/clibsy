@@ -27,7 +27,7 @@ var SONG_NOTES_MAX_LENGTH = 255;
 var SONG_TEMPO_MAX_LENGTH = 255;
 var SONG_MOOD_MAX_LENGTH = 255;
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function defineSong(sequelize, DataTypes) {
     var Song = sequelize.define('Song', {
         /*eslint-disable camelcase, new-cap */
         song_id: {
@@ -99,7 +99,7 @@ module.exports = function(sequelize, DataTypes) {
         hooks: {
         },
         classMethods: {
-            associate: function(models) {
+            function associate(models) {
                 /*eslint-disable max-len */
                 Song.belongsTo(models.User,  { as: 'owner', foreignKey: 'user_id' });
                 Song.belongsTo(models.Genre, { as: 'genre', foreignKey: 'genre_id' });

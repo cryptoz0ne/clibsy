@@ -22,7 +22,7 @@ var COUNTRY_ISO_NAME_MAX_LENGTH = 255;
 var COUNTRY_ISO_2_MAX_LENGTH = 2;
 var COUNTRY_ISO_3_MAX_LENGTH = 3;
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function defineCountry(sequelize, DataTypes) {
     var Country = sequelize.define('Country', {
         /*eslint-disable camelcase, new-cap */
         country_id: {
@@ -98,7 +98,7 @@ module.exports = function(sequelize, DataTypes) {
         validate: {
         },
         classMethods: {
-            associate: function(models) {
+            function associate(models) {
                 Country.hasMany(models.Region, { as: 'regions',   foreignKey: 'country_id' });
                 Country.hasMany(models.Phone,  { as: 'phones',    foreignKey: 'country_id' });
                 Country.hasMany(models.Group,  { as: 'groups',    foreignKey: 'country_id' });

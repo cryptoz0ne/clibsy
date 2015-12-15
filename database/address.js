@@ -21,7 +21,7 @@ var ADDRESS_LOCALITY_MAX_LENGTH = 100;
 var ADDRESS_REGION_MAX_LENGTH = 100;
 var ADDRESS_POSTALCODE_MAX_LENGTH = 10;
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function defineAddress(sequelize, DataTypes) {
     var Address = sequelize.define('Address', {
         /*eslint-disable camelcase, new-cap */
         address_id: {
@@ -152,17 +152,17 @@ module.exports = function(sequelize, DataTypes) {
         // updatedAt:  true,
         paranoid: false,
         // freezeTableName: true, // defaulted globally
-        tableName: 'address',   // force table name to this value
+        tableName: 'address',     // force table name to this value
         validate: {
         },
         classMethods: {
-            associate: function(models) {
+            function associate(models) {
                 Address.belongsTo(models.Region,  { foreignKey: 'region_id' });
                 Address.belongsTo(models.User,    { foreignKey: 'user_id' });
                 Address.belongsTo(models.Company, { foreignKey: 'company_id' });
                 Address.belongsTo(models.Contact, { foreignKey: 'contact_id' });
             },
-            extractName: function(db, value) {
+            function extractName(db, value) {
                 value = db.Sequelize.Validator.trim(db.Sequelize.Validator.toString(value));
                 if (db.Sequelize.Validator.equals(value, '')) {
                     value = null;
@@ -170,7 +170,7 @@ module.exports = function(sequelize, DataTypes) {
 
                 return value;
             },
-            extractAddress: function(db, value) {
+            function extractAddress(db, value) {
                 value = db.Sequelize.Validator.trim(db.Sequelize.Validator.toString(value));
                 if (db.Sequelize.Validator.equals(value, '')) {
                     value = null;

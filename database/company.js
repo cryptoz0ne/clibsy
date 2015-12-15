@@ -21,7 +21,7 @@ var COMPANY_EMAIL_MAX_LENGTH = 255;
 var COMPANY_WEBSITE_MAX_LENGTH = 255;
 var COMPANY_DESC_MAX_LENGTH = 1000;
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function defineCompany(sequelize, DataTypes) {
     var Company = sequelize.define('Company', {
         /*eslint-disable camelcase, new-cap */
         company_id: {
@@ -110,13 +110,13 @@ module.exports = function(sequelize, DataTypes) {
         validate: {
         },
         classMethods: {
-            associate: function(models) {
+            function associate(models) {
                 Company.hasOne(models.Address,      { as: 'address',  foreignKey: 'company_id' });
                 Company.hasOne(models.Phone,        { as: 'phone',    foreignKey: 'company_id' });
                 Company.hasMany(models.Contact,     { as: 'contacts', foreignKey: 'company_id' });
                 Company.hasMany(models.UserProfile, { as: 'profiles', foreignKey: 'company_id' });
             },
-            extractName: function(db, value) {
+            function extractName(db, value) {
                 value = db.Sequelize.Validator.trim(db.Sequelize.Validator.toString(value));
                 if (db.Sequelize.Validator.equals(value, '')) {
                     value = null;

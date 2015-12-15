@@ -17,7 +17,7 @@
 
 var GENRE_NAME_MAX_LENGTH = 100;
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function defineGenre(sequelize, DataTypes) {
     var Genre = sequelize.define('Genre', {
         /*eslint-disable camelcase, new-cap */
         genre_id: {
@@ -49,7 +49,7 @@ module.exports = function(sequelize, DataTypes) {
         validate: {
         },
         classMethods: {
-            associate: function(models) {
+            function associate(models) {
                 Genre.hasMany(models.Songs, { as: 'songs', foreignKey: 'genre_id' });
             }
         },

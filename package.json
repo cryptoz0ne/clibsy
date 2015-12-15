@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Server used to build out and demonstrate Clibsy APIs.",
   "homepage": "http://www.clibsy.com",
-  "private": "true",
+  "private": true,
   "main": "bin/www.js",
   "author": {
     "name": "Joe Kramer",
@@ -14,7 +14,7 @@
     "url": "git://gitlab.com:clibsy/clibsy.com.git"
   },
   "bugs": {
-    "email": "joe@clibsy.com"
+    "url": "https://gitlab.com/clibsy/clibsy.com/issues"
   },
   "dependencies": {
     "bcryptjs": "^2.2.1",
@@ -56,6 +56,6 @@
   "readmeFilename": "README.md",
   "//": [
     "COMMENT SECTION:",
-    "Add 'url' into bugs with link to bug tracker"
+    "N/A"
   ]
 }

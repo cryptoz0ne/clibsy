@@ -15,7 +15,7 @@
 //******************************************************************************
 'use strict';
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function defineUserMessage(sequelize, DataTypes) {
     var UserMessage = sequelize.define('UserMessage', {
         /*eslint-disable camelcase, new-cap */
         is_sender: {
@@ -46,7 +46,7 @@ module.exports = function(sequelize, DataTypes) {
         hooks: {
         },
         classMethods: {
-            associate: function(models) { // eslint-disable-line no-unused-vars
+            function associate(models) { // eslint-disable-line no-unused-vars
                 // user_id and message_id foreign key references handled by through table definition
             }
         },

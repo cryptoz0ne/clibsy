@@ -17,7 +17,7 @@
 
 var GROUP_NAME_MAX_LENGTH = 100;
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function defineGroup(sequelize, DataTypes) {
     var Group = sequelize.define('Group', {
         /*eslint-disable camelcase, new-cap */
         group_id: {
@@ -54,7 +54,7 @@ module.exports = function(sequelize, DataTypes) {
         validate: {
         },
         classMethods: {
-            associate: function(models) {
+            function associate(models) {
                 Group.belongsTo(models.Country, { as: 'country', foreignKey: 'country_id' });
                 Group.belongsToMany(models.User, { as: 'members', foreignKey:'user_id', through: { model: models.UserGroup, unique: true } });
             }
