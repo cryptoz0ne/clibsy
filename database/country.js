@@ -81,7 +81,7 @@ module.exports = function defineCountry(sequelize, DataTypes) {
             }
         },
         iso_numeric: {
-            type: DataTypes.SMALLINT,
+            type: DataTypes.INTEGER,
             allowNull: false,
             unique: true,
             validate: {
@@ -98,7 +98,7 @@ module.exports = function defineCountry(sequelize, DataTypes) {
         validate: {
         },
         classMethods: {
-            function associate(models) {
+            associate(models) {
                 Country.hasMany(models.Region, { as: 'regions',   foreignKey: 'country_id' });
                 Country.hasMany(models.Phone,  { as: 'phones',    foreignKey: 'country_id' });
                 Country.hasMany(models.Group,  { as: 'groups',    foreignKey: 'country_id' });

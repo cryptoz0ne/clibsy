@@ -48,7 +48,7 @@ module.exports = function defineMessage(sequelize, DataTypes) {
         // freezeTableName: true, // defaulted globally
         tableName: 'message',     // force table name to this value
         classMethods: {
-            function associate(models) {
+            associate(models) {
                 /*eslint-disable max-len */
                 Message.belongsToMany(models.User, { as: 'users', foreignKey:'user_id', through: { model: models.UserMessage, unique: true } });
                 /*eslint-enable max-len */

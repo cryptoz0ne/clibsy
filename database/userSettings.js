@@ -66,7 +66,7 @@ module.exports = function defineUserSettings(sequelize, DataTypes) {
         hooks: {
         },
         classMethods: {
-            function associate(models) { // eslint-disable-line no-unused-vars
+            associate(models) { // eslint-disable-line no-unused-vars
                 // user_id foreign key reference handled above in field definition
             }
         },

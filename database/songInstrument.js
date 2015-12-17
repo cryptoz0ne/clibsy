@@ -31,7 +31,7 @@ module.exports = function defineSongInstrument(sequelize, DataTypes) {
         hooks: {
         },
         classMethods: {
-            function associate(models) { // eslint-disable-line no-unused-vars
+            associate(models) { // eslint-disable-line no-unused-vars
                 // song_id and instrument_id foreign key references handled by
                 // through table definition
             }

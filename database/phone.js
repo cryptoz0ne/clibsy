@@ -81,13 +81,13 @@ module.exports = function definePhone(sequelize, DataTypes) {
         validate: {
         },
         classMethods: {
-            function associate(models) {
+            associate(models) {
                 Phone.belongsTo(models.Country, { foreighKey: 'country_id' });
                 Phone.belongsTo(models.User,    { foreignKey: 'user_id' });
                 Phone.belongsTo(models.Company, { foreighKey: 'company_id' });
                 Phone.belongsTo(models.Contact, { foreignKey: 'contact_id' });
             },
-            function extractName(db, value) {
+            extractName(db, value) {
                 value = db.Sequelize.Validator.trim(db.Sequelize.Validator.toString(value));
                 if (db.Sequelize.Validator.equals(value, '')) {
                     value = null;
@@ -95,7 +95,7 @@ module.exports = function definePhone(sequelize, DataTypes) {
 
                 return value;
             },
-            function extractExtension(db, value) {
+            extractExtension(db, value) {
                 value = db.Sequelize.Validator.trim(db.Sequelize.Validator.toString(value));
                 if (db.Sequelize.Validator.equals(value, '')) {
                     value = null;

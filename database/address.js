@@ -156,13 +156,13 @@ module.exports = function defineAddress(sequelize, DataTypes) {
         validate: {
         },
         classMethods: {
-            function associate(models) {
+            associate(models) {
                 Address.belongsTo(models.Region,  { foreignKey: 'region_id' });
                 Address.belongsTo(models.User,    { foreignKey: 'user_id' });
                 Address.belongsTo(models.Company, { foreignKey: 'company_id' });
                 Address.belongsTo(models.Contact, { foreignKey: 'contact_id' });
             },
-            function extractName(db, value) {
+            extractName(db, value) {
                 value = db.Sequelize.Validator.trim(db.Sequelize.Validator.toString(value));
                 if (db.Sequelize.Validator.equals(value, '')) {
                     value = null;
@@ -170,7 +170,7 @@ module.exports = function defineAddress(sequelize, DataTypes) {
 
                 return value;
             },
-            function extractAddress(db, value) {
+            extractAddress(db, value) {
                 value = db.Sequelize.Validator.trim(db.Sequelize.Validator.toString(value));
                 if (db.Sequelize.Validator.equals(value, '')) {
                     value = null;

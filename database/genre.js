@@ -49,8 +49,8 @@ module.exports = function defineGenre(sequelize, DataTypes) {
         validate: {
         },
         classMethods: {
-            function associate(models) {
-                Genre.hasMany(models.Songs, { as: 'songs', foreignKey: 'genre_id' });
+            associate(models) {
+                Genre.hasMany(models.Song, { as: 'songs', foreignKey: 'genre_id' });
             }
         },
         instanceMethods: {

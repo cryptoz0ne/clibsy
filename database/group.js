@@ -54,7 +54,7 @@ module.exports = function defineGroup(sequelize, DataTypes) {
         validate: {
         },
         classMethods: {
-            function associate(models) {
+            associate(models) {
                 Group.belongsTo(models.Country, { as: 'country', foreignKey: 'country_id' });
                 Group.belongsToMany(models.User, { as: 'members', foreignKey:'user_id', through: { model: models.UserGroup, unique: true } });
             }

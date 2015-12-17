@@ -110,13 +110,13 @@ module.exports = function defineCompany(sequelize, DataTypes) {
         validate: {
         },
         classMethods: {
-            function associate(models) {
+            associate(models) {
                 Company.hasOne(models.Address,      { as: 'address',  foreignKey: 'company_id' });
                 Company.hasOne(models.Phone,        { as: 'phone',    foreignKey: 'company_id' });
                 Company.hasMany(models.Contact,     { as: 'contacts', foreignKey: 'company_id' });
                 Company.hasMany(models.UserProfile, { as: 'profiles', foreignKey: 'company_id' });
             },
-            function extractName(db, value) {
+            extractName(db, value) {
                 value = db.Sequelize.Validator.trim(db.Sequelize.Validator.toString(value));
                 if (db.Sequelize.Validator.equals(value, '')) {
                     value = null;

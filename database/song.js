@@ -99,12 +99,12 @@ module.exports = function defineSong(sequelize, DataTypes) {
         hooks: {
         },
         classMethods: {
-            function associate(models) {
+            associate(models) {
                 /*eslint-disable max-len */
                 Song.belongsTo(models.User,  { as: 'owner', foreignKey: 'user_id' });
                 Song.belongsTo(models.Genre, { as: 'genre', foreignKey: 'genre_id' });
                 Song.belongsToMany(models.User,       { as: 'writers',     foreignKey:'user_id',       through: { model: models.SongWriter,     unique: true } });
-                Song.belongsToMany(models.Intsrument, { as: 'instruments', foreignKey:'instrument_id', through: { model: models.SongInstrument, unique: true } });
+                Song.belongsToMany(models.Instrument, { as: 'instruments', foreignKey:'instrument_id', through: { model: models.SongInstrument, unique: true } });
                 /*eslint-enable max-len */
             }
         },

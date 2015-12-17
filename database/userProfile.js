@@ -91,7 +91,7 @@ module.exports = function defineUserProfile(sequelize, DataTypes) {
         hooks: {
         },
         classMethods: {
-            function associate(models) {
+            associate(models) {
                 // user_id foreign key reference handled above in field definition
                 UserProfile.belongsTo(models.Company, { foreignKey: 'company_id' });
                 UserProfile.belongsTo(models.Address, { foreignKey: 'address_id' });

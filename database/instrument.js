@@ -56,8 +56,8 @@ module.exports = function defineInstrument(sequelize, DataTypes) {
         validate: {
         },
         classMethods: {
-            function associate(models) {
-                Instrument.belongsToMany(models.Songs, { as: 'songs', foreignKey:'instrument_id', through: { model: models.SongInstrument, unique: true } });
+            associate(models) {
+                Instrument.belongsToMany(models.Song, { as: 'songs', foreignKey:'instrument_id', through: { model: models.SongInstrument, unique: true } });
             }
         },
         instanceMethods: {

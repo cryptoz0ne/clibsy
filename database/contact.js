@@ -110,14 +110,14 @@ module.exports = function defineContact(sequelize, DataTypes) {
         validate: {
         },
         classMethods: {
-            function associate(models) {
+            associate(models) {
                 Contact.belongsTo(models.User,    { as: 'owner',      foreignKey: 'user_id' });
                 Contact.belongsTo(models.User,    { as: 'connection', foreignKey: 'user_id' });
                 Contact.belongsTo(models.Company, { as: 'company',    foreignKey: 'compnay_id' });
                 Contact.hasMany(models.Address, { as: 'addresses', foreignKey: 'address_id' });
                 Contact.hasMany(models.Phone,   { as: 'phones',    foreignKey: 'phone_id' });
             },
-            function extractName(db, value) {
+            extractName(db, value) {
                 value = db.Sequelize.Validator.trim(db.Sequelize.Validator.toString(value));
                 if (db.Sequelize.Validator.equals(value, '')) {
                     value = null;

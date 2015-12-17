@@ -46,7 +46,7 @@ module.exports = function defineUserGroup(sequelize, DataTypes) {
         hooks: {
         },
         classMethods: {
-            function associate(models) { // eslint-disable-line no-unused-vars
+            associate(models) { // eslint-disable-line no-unused-vars
                 // user_id and group_id foreign key references handled by
                 // through table definition
             }
