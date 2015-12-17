@@ -6,37 +6,36 @@
 //
 // PROJECT: clibsy.com
 //
-// FILE: message.js
+// FILE: genre.js
 //
-// DESCRIPTION: Definition of the message table model used by SequelizeJS to map
+// DESCRIPTION: Definition of the genre table model used by SequelizeJS to map
 //              objects.
 //
-// AUTHOR: Joe Kramer joe@clibsy.com 2015/10/18
+// AUTHOR: Joe Kramer joe@clibsy.com 2015/12/01
 //******************************************************************************
 'use strict';
 
-var MESSAGE_SUBJECT_MAX_LENGTH = 255;
+var GENRE_NAME_MAX_LENGTH = 100;
 
-module.exports = function defineMessage(sequelize, DataTypes) {
-    var Message = sequelize.define('Message', {
+module.exports = function defineGenre(sequelize, DataTypes) {
+    var Genre = sequelize.define('Genre', {
         /*eslint-disable camelcase, new-cap */
-        message_id: {
+        genre_id: {
             type: DataTypes.BIGINT, // .UNSIGNED
             primaryKey: true,
             autoIncrement: true
         },
-        subject: {
-            type: DataTypes.STRING( MESSAGE_SUBJECT_MAX_LENGTH ),
-            allowNull: false,
-            defaultValue: '',
+        name: {
+            type: DataTypes.STRING( GENRE_NAME_MAX_LENGTH ),
+            allowNull: true,
+            defaultValue: null,
             validate: {
-            }
-        },
-        body: {
-            type: DataTypes.TEXT,
-            allowNull: false,
-            defaultValue: '',
-            validate: {
+                len: {
+                    args: [1, GENRE_NAME_MAX_LENGTH],
+                    msg: 'Genre name can be no more than '
+                         + GENRE_NAME_MAX_LENGTH
+                         + ' characters in length'
+                }
             }
         }
         /*eslint-enable camelcase, new-cap */
@@ -44,19 +43,19 @@ module.exports = function defineMessage(sequelize, DataTypes) {
         // timestamps: true,      // defaulted globally
         // createdAt:  true,
         // updatedAt:  true,
-        paranoid: true,
+        paranoid: false,
         // freezeTableName: true, // defaulted globally
-        tableName: 'message',     // force table name to this value
+        tableName: 'genre',       // force table name to this value
+        validate: {
+        },
         classMethods: {
             associate(models) {
-                /*eslint-disable max-len */
-                Message.belongsToMany(models.User, { as: 'users', foreignKey:'user_id', through: { model: models.UserMessage, unique: true } });
-                /*eslint-enable max-len */
+                Genre.hasMany(models.Song, { as: 'songs', foreignKey: 'genre_id' });
             }
         },
         instanceMethods: {
         }
     });
 
-    return Message;
+    return Genre;
 };

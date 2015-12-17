@@ -6,63 +6,63 @@
 //
 // PROJECT: clibsy.com
 //
-// FILE: contact.js
+// FILE: company.js
 //
-// DESCRIPTION: Definition of the contact table model used by SequelizeJS to map
+// DESCRIPTION: Definition of the company table model used by SequelizeJS to map
 //              objects.
 //
-// AUTHOR: Joe Kramer joe@clibsy.com 2015/11/02
+// AUTHOR: Joe Kramer joe@clibsy.com 2015/11/30
 //******************************************************************************
 'use strict';
 
-var CONTACT_NAME_MAX_LENGTH = 100;
-var CONTACT_EMAIL_MAX_LENGTH = 255;
-var CONTACT_WEBSITE_MAX_LENGTH = 255;
-var CONTACT_NOTE_MAX_LENGTH = 1000;
+var COMPANY_NAME_MAX_LENGTH = 100;
+var COMPANY_LOGO_IMAGE_MAX_LENGTH = 255;
+var COMPANY_EMAIL_MAX_LENGTH = 255;
+var COMPANY_WEBSITE_MAX_LENGTH = 255;
+var COMPANY_DESC_MAX_LENGTH = 1000;
 
-module.exports = function defineContact(sequelize, DataTypes) {
-    var Contact = sequelize.define('Contact', {
+module.exports = function defineCompany(sequelize, DataTypes) {
+    var Company = sequelize.define('Company', {
         /*eslint-disable camelcase, new-cap */
-        contact_id: {
+        company_id: {
             type: DataTypes.BIGINT, // .UNSIGNED
             primaryKey: true,
             autoIncrement: true
         },
-        given_name: {
-            type: DataTypes.STRING( CONTACT_NAME_MAX_LENGTH ),
-            allowNull: true,
-            defaultValue: null,
+        name: {
+            type: DataTypes.STRING( COMPANY_NAME_MAX_LENGTH ),
+            allowNull: false,
             validate: {
                 len: {
-                    args: [1, CONTACT_NAME_MAX_LENGTH],
-                    msg: 'Contact name can be no more than '
-                         + CONTACT_NAME_MAX_LENGTH
+                    args: [1, COMPANY_NAME_MAX_LENGTH],
+                    msg: 'Company name must be no more than '
+                         + COMPANY_NAME_MAX_LENGTH
                          + ' characters in length'
                 }
             }
         },
-        family_name: {
-            type: DataTypes.STRING( CONTACT_NAME_MAX_LENGTH ),
+        logo_image: {
+            type: DataTypes.STRING( COMPANY_LOGO_IMAGE_MAX_LENGTH ),
             allowNull: true,
             defaultValue: null,
             validate: {
                 len: {
-                    args: [1, CONTACT_NAME_MAX_LENGTH],
-                    msg: 'Contact name can be no more than '
-                         + CONTACT_NAME_MAX_LENGTH
+                    args: [1, COMPANY_LOGO_IMAGE_MAX_LENGTH],
+                    msg: 'Logo image URL can be no more than '
+                         + COMPANY_LOGO_IMAGE_MAX_LENGTH
                          + ' characters in length'
                 }
             }
         },
-        email: { // TODO: extend to multiple?
-            type: DataTypes.STRING( CONTACT_EMAIL_MAX_LENGTH ),
+        email: {
+            type: DataTypes.STRING( COMPANY_EMAIL_MAX_LENGTH ),
             allowNull: true,
             defaultValue: null,
             validate: {
                 len: {
-                    args: [1, CONTACT_EMAIL_MAX_LENGTH],
+                    args: [1, COMPANY_EMAIL_MAX_LENGTH],
                     msg: 'Email address can be no more than '
-                         + CONTACT_EMAIL_MAX_LENGTH
+                         + COMPANY_EMAIL_MAX_LENGTH
                          + ' characters in length'
                 },
                 isEmail: {
@@ -71,14 +71,14 @@ module.exports = function defineContact(sequelize, DataTypes) {
             }
         },
         website: {
-            type: DataTypes.STRING( CONTACT_WEBSITE_MAX_LENGTH ),
+            type: DataTypes.STRING( COMPANY_WEBSITE_MAX_LENGTH ),
             allowNull: true,
             defaultValue: null,
             validate: {
                 len: {
-                    args: [1, CONTACT_WEBSITE_MAX_LENGTH],
+                    args: [1, COMPANY_WEBSITE_MAX_LENGTH],
                     msg: 'Website URL can be no more than '
-                         + CONTACT_WEBSITE_MAX_LENGTH
+                         + COMPANY_WEBSITE_MAX_LENGTH
                          + ' characters in length'
                 },
                 isUrl: {
@@ -86,15 +86,15 @@ module.exports = function defineContact(sequelize, DataTypes) {
                 }
             }
         },
-        note: {
-            type: DataTypes.STRING( CONTACT_NOTE_MAX_LENGTH ),
+        desc: {
+            type: DataTypes.STRING( COMPANY_DESC_MAX_LENGTH ),
             allowNull: true,
             defaultValue: null,
             validate: {
                 len: {
-                    args: [1, CONTACT_NOTE_MAX_LENGTH],
-                    msg: 'Note can be no more than '
-                         + CONTACT_NOTE_MAX_LENGTH
+                    args: [1, COMPANY_DESC_MAX_LENGTH],
+                    msg: 'Description can be no more than '
+                         + COMPANY_DESC_MAX_LENGTH
                          + ' characters in length'
                 }
             }
@@ -106,16 +106,15 @@ module.exports = function defineContact(sequelize, DataTypes) {
         // updatedAt:  true,
         paranoid: false,
         // freezeTableName: true, // defaulted globally
-        tableName: 'contact',     // force table name to this value
+        tableName: 'company',     // force table name to this value
         validate: {
         },
         classMethods: {
             associate(models) {
-                Contact.belongsTo(models.User,    { as: 'owner',      foreignKey: 'user_id' });
-                Contact.belongsTo(models.User,    { as: 'connection', foreignKey: 'user_id' });
-                Contact.belongsTo(models.Company, { as: 'company',    foreignKey: 'compnay_id' });
-                Contact.hasMany(models.Address, { as: 'addresses', foreignKey: 'address_id' });
-                Contact.hasMany(models.Phone,   { as: 'phones',    foreignKey: 'phone_id' });
+                Company.hasOne(models.Address,      { as: 'address',  foreignKey: 'company_id' });
+                Company.hasOne(models.Phone,        { as: 'phone',    foreignKey: 'company_id' });
+                Company.hasMany(models.Contact,     { as: 'contacts', foreignKey: 'company_id' });
+                Company.hasMany(models.UserProfile, { as: 'profiles', foreignKey: 'company_id' });
             },
             extractName(db, value) {
                 value = db.Sequelize.Validator.trim(db.Sequelize.Validator.toString(value));
@@ -130,5 +129,5 @@ module.exports = function defineContact(sequelize, DataTypes) {
         }
     });
 
-    return Contact;
+    return Company;
 };

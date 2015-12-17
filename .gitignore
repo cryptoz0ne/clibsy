@@ -3,6 +3,8 @@
 
 # Text Editor/Environment Files
 #################################################
+*.sublime-project
+*.sublime-workspace
 
 # Node.js Files
 #################################################
@@ -37,7 +39,7 @@ node_modules
 
 # OS X Generated Files
 #################################################
-_Store
+.DS_Store
 .AppleDouble
 .LSOverride
 
