@@ -43,6 +43,7 @@
  *      "token": "Bearer rgS0eXAiOiGSI3QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOjUsIm4hdCI6MTQ0MTM5NDgwMDU1MSwianRpIjoiV0ZHRkbIUGlBYSJ9._tuR_EiJq-d3dwh3kypqR4OKF_tvEtkLFXwGrvst09w",
  *  }
  *
+ * @apiUse BadRequestError
  * @apiUse UnauthorizedError
  * @apiUse InternalServerError
  */
@@ -85,6 +86,15 @@
  * @apiSuccess (200) {Boolean} email    (optional) True if given email address is unique to the system; otherwise, false. Only returned if 'email' is provided in the request.
  * @apiSuccess (200) {Boolean} phone    (optional) True if given phone number is unique to the system; otherwise, false. Only returned if 'phone' is provided in the request.
  *
+ * @apiSuccessExample {json} Success-Response:
+ *  HTTP/1.1 200 OK
+ *  {
+ *      "username": true,
+ *      "email": true,
+ *      "phone": true
+ *  }
+ *
+ * @apiUse BadRequestError
  * @apiUse InternalServerError
  */
 
