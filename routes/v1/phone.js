@@ -23,7 +23,7 @@
 /**
  * @api {GET} /phones Retreive data for all phones for the current user
  * @apiName GetPhones
- * @apiGroup Phones
+ * @apiGroup Phone
  *
  * @apiVersion 1.0.0
  *
@@ -36,6 +36,7 @@
  * @apiSuccess (200) {Object} phones Array of phones
  *
  * @apiUse UnauthorizedError
+ * @apiUse InternalServerError
  */
 
 /**
@@ -51,25 +52,44 @@
  *
  * @apiHeader {String} authorization    Authorization token.
  *
- * @apiSuccess (200) {Number}  phone_id       TODO
- * @apiSuccess (200) {String}  name           TODO
- * @apiSuccess (200) {String}  number         TODO
- * @apiSuccess (200) {String}  extension      TODO
+ * @apiSuccess (200) {Number}  phone_id   ID of the phone number
+ * @apiSuccess (200) {Number}  name       Name of phone number
+ * @apiSuccess (200) {Number}  number     Digits of phone number
+ * @apiSuccess (200) {Number}  extension  Extension digits of phone number
+ * @apiSuccess (200) {Number}  country_id Link to associated country
+ * @apiSuccess (200) {Object}  country
+ * @apiSuccess (200) {Number}  country.country_id   ID of the country
+ * @apiSuccess (200) {String}  country.name         Name of country
+ * @apiSuccess (200) {String}  country.iso_name     Official ISO name of country
+ * @apiSuccess (200) {String}  country.iso_2        ISO Alpha-2 code
+ * @apiSuccess (200) {String}  country.iso_3        ISO Alpha-3 code
+ * @apiSuccess (200) {Number}  country.iso_numeric  ISO numeric code
  *
  * @apiSuccessExample {json} Success-Response:
  *  HTTP/1.1 200 OK
  *  {
- *      "phone_id": 1,
- *      "name": "Home",
- *      "number": "2125551234",
- *      "extension": null
+ *      "phone_id": 101,
+ *      "name": "Cell",
+ *      "number": "+12125551234",
+ *      "extension": null,
+ *      "country_id": 1,
+ *      "country": {
+ *          "country_id": 1,
+ *          "name": "United States"
+ *          "iso_name": "UNITED STATES"
+ *          "iso_2": "US",
+ *          "iso_3": "USA",
+ *          "iso_numeric": "840"
+ *      }
  *  }
  *
  * @apiUse UnauthorizedError
+ * @apiUse NotFoundError
+ * @apiUse InternalServerError
  */
 
 /**
- * @api {PATCH} /phones/:id TODO
+ * @api {PATCH} /phones/:id Updates data of phone with `id`
  * @apiName PatchPhonesId
  * @apiGroup Phone
  *
@@ -77,29 +97,110 @@
  *
  * @apiPermission none
  *
- * @apiDescription TODO
+ * @apiDescription Updates data of phone. All request body fields are optional. Any fields not specified, are ignored and unchanged.
  *
  * @apiHeader {String} authorization    Authorization token.
  *
+ * @apiParam (param) id ID of the phone
+ *
+ * @apiParam (body) name
+ * @apiParam (body) number
+ * @apiParam (body) extension
+ * @apiParam (body) country_id
+ *
+ * @apiSuccess (200) {Number}  phone_id   ID of the phone number
+ * @apiSuccess (200) {Number}  name       Name of phone number
+ * @apiSuccess (200) {Number}  number     Digits of phone number
+ * @apiSuccess (200) {Number}  extension  Extension digits of phone number
+ * @apiSuccess (200) {Number}  country_id Link to associated country
+ * @apiSuccess (200) {Object}  country
+ * @apiSuccess (200) {Number}  country.country_id   ID of the country
+ * @apiSuccess (200) {String}  country.name         Name of country
+ * @apiSuccess (200) {String}  country.iso_name     Official ISO name of country
+ * @apiSuccess (200) {String}  country.iso_2        ISO Alpha-2 code
+ * @apiSuccess (200) {String}  country.iso_3        ISO Alpha-3 code
+ * @apiSuccess (200) {Number}  country.iso_numeric  ISO numeric code
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *  HTTP/1.1 200 OK
+ *  {
+ *      "phone_id": 101,
+ *      "name": "Cell",
+ *      "number": "+12125551234",
+ *      "extension": null,
+ *      "country_id": 1,
+ *      "country": {
+ *          "country_id": 1,
+ *          "name": "United States"
+ *          "iso_name": "UNITED STATES"
+ *          "iso_2": "US",
+ *          "iso_3": "USA",
+ *          "iso_numeric": "840"
+ *      }
+ *  }
+ *
+ * @apiUse BadRequestError
+ * @apiUse UnauthorizedError
+ * @apiUse NotFoundError
+ * @apiUse InternalServerError
  */
 
 /**
- * @api {POST} /phones TODO
- * @apiName PostPhonesId
+ * @api {POST} /phones Create a new phone
+ * @apiName PostPhones
  * @apiGroup Phone
  *
  * @apiVersion 1.0.0
  *
  * @apiPermission none
  *
- * @apiDescription TODO
+ * @apiDescription Create a new phone.
  *
  * @apiHeader {String} authorization    Authorization token.
  *
+ * @apiParam (body) name
+ * @apiParam (body) number
+ * @apiParam (body) extension
+ * @apiParam (body) country_id
+ *
+ * @apiSuccess (201) {Number}  phone_id   ID of the phone number
+ * @apiSuccess (201) {Number}  name       Name of phone number
+ * @apiSuccess (201) {Number}  number     Digits of phone number
+ * @apiSuccess (201) {Number}  extension  Extension digits of phone number
+ * @apiSuccess (201) {Number}  country_id Link to associated country
+ * @apiSuccess (201) {Object}  country
+ * @apiSuccess (201) {Number}  country.country_id   ID of the country
+ * @apiSuccess (201) {String}  country.name         Name of country
+ * @apiSuccess (201) {String}  country.iso_name     Official ISO name of country
+ * @apiSuccess (201) {String}  country.iso_2        ISO Alpha-2 code
+ * @apiSuccess (201) {String}  country.iso_3        ISO Alpha-3 code
+ * @apiSuccess (201) {Number}  country.iso_numeric  ISO numeric code
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *  HTTP/1.1 201 OK
+ *  {
+ *      "phone_id": 101,
+ *      "name": "Cell",
+ *      "number": "+12125551234",
+ *      "extension": null,
+ *      "country_id": 1,
+ *      "country": {
+ *          "country_id": 1,
+ *          "name": "United States"
+ *          "iso_name": "UNITED STATES"
+ *          "iso_2": "US",
+ *          "iso_3": "USA",
+ *          "iso_numeric": "840"
+ *      }
+ *  }
+ *
+ * @apiUse BadRequestError
+ * @apiUse UnauthorizedError
+ * @apiUse InternalServerError
  */
 
 /**
- * @api {DELETE} /phones/:id TODO
+ * @api {DELETE} /phones/:id Delete the phone with `id` from the system
  * @apiName DeletePhonesId
  * @apiGroup Phone
  *
@@ -107,8 +208,13 @@
  *
  * @apiPermission none
  *
- * @apiDescription TODO
+ * @apiDescription Delete the phone.
  *
  * @apiHeader {String} authorization    Authorization token.
  *
+ * @apiSuccess (204) No Content
+ *
+ * @apiUse UnauthorizedError
+ * @apiUse NotFoundError
+ * @apiUse InternalServerError
  */
