@@ -21,7 +21,7 @@
  */
 
 /**
- * @api {GET} /phones Retreive data for all phones for the current user
+ * @api {GET} /phones [GET] /phones
  * @apiName GetPhones
  * @apiGroup Phone
  *
@@ -29,9 +29,9 @@
  *
  * @apiPermission none
  *
- * @apiDescription Retrieves an array of phones.
+ * @apiDescription Retrieves an array of all phones for the current user.
  *
- * @apiHeader {String} authorization    Authorization token.
+ * @apiHeader {String} authorization Authorization token
  *
  * @apiSuccess (200) {Object} phones Array of phones
  *
@@ -40,7 +40,7 @@
  */
 
 /**
- * @api {GET} /phones/:id Retreive data of phone for current user
+ * @api {GET} /phones/:id [GET] /phones/:id
  * @apiName GetPhonesId
  * @apiGroup Phone
  *
@@ -48,22 +48,22 @@
  *
  * @apiPermission none
  *
- * @apiDescription Retrieves data of phone with `id` for current user.
+ * @apiDescription Retrieves data of phone (:id) for current user.
  *
- * @apiHeader {String} authorization    Authorization token.
+ * @apiHeader {String} authorization Authorization token
  *
- * @apiSuccess (200) {Number}  phone_id   ID of the phone number
- * @apiSuccess (200) {Number}  name       Name of phone number
- * @apiSuccess (200) {Number}  number     Digits of phone number
- * @apiSuccess (200) {Number}  extension  Extension digits of phone number
- * @apiSuccess (200) {Number}  country_id Link to associated country
- * @apiSuccess (200) {Object}  country
- * @apiSuccess (200) {Number}  country.country_id   ID of the country
- * @apiSuccess (200) {String}  country.name         Name of country
- * @apiSuccess (200) {String}  country.iso_name     Official ISO name of country
- * @apiSuccess (200) {String}  country.iso_2        ISO Alpha-2 code
- * @apiSuccess (200) {String}  country.iso_3        ISO Alpha-3 code
- * @apiSuccess (200) {Number}  country.iso_numeric  ISO numeric code
+ * @apiSuccess (200) {Number} phone_id   ID of the phone number
+ * @apiSuccess (200) {Number} name       Name of phone number
+ * @apiSuccess (200) {Number} number     Digits of phone number
+ * @apiSuccess (200) {Number} extension  Extension digits of phone number
+ * @apiSuccess (200) {Number} country_id Link to associated country
+ * @apiSuccess (200) {Object} country
+ * @apiSuccess (200) {Number} country.country_id  ID of the country
+ * @apiSuccess (200) {String} country.name        Name of country
+ * @apiSuccess (200) {String} country.iso_name    Official ISO name of country
+ * @apiSuccess (200) {String} country.iso_2       ISO Alpha-2 code
+ * @apiSuccess (200) {String} country.iso_3       ISO Alpha-3 code
+ * @apiSuccess (200) {Number} country.iso_numeric ISO numeric code
  *
  * @apiSuccessExample {json} Success-Response:
  *  HTTP/1.1 200 OK
@@ -89,7 +89,7 @@
  */
 
 /**
- * @api {PATCH} /phones/:id Updates data of phone with `id`
+ * @api {PATCH} /phones/:id [PATCH] /phones/:id
  * @apiName PatchPhonesId
  * @apiGroup Phone
  *
@@ -97,29 +97,29 @@
  *
  * @apiPermission none
  *
- * @apiDescription Updates data of phone. All request body fields are optional. Any fields not specified, are ignored and unchanged.
+ * @apiDescription Updates data of phone (:id). All request body fields are optional. Any fields not specified, are ignored and unchanged.
  *
- * @apiHeader {String} authorization    Authorization token.
+ * @apiHeader {String} authorization Authorization token
  *
- * @apiParam (param) id ID of the phone
+ * @apiParam (Param) id ID of the phone
  *
- * @apiParam (body) name
- * @apiParam (body) number
- * @apiParam (body) extension
- * @apiParam (body) country_id
+ * @apiParam (Body) name
+ * @apiParam (Body) number
+ * @apiParam (Body) extension
+ * @apiParam (Body) country_id
  *
- * @apiSuccess (200) {Number}  phone_id   ID of the phone number
- * @apiSuccess (200) {Number}  name       Name of phone number
- * @apiSuccess (200) {Number}  number     Digits of phone number
- * @apiSuccess (200) {Number}  extension  Extension digits of phone number
- * @apiSuccess (200) {Number}  country_id Link to associated country
- * @apiSuccess (200) {Object}  country
- * @apiSuccess (200) {Number}  country.country_id   ID of the country
- * @apiSuccess (200) {String}  country.name         Name of country
- * @apiSuccess (200) {String}  country.iso_name     Official ISO name of country
- * @apiSuccess (200) {String}  country.iso_2        ISO Alpha-2 code
- * @apiSuccess (200) {String}  country.iso_3        ISO Alpha-3 code
- * @apiSuccess (200) {Number}  country.iso_numeric  ISO numeric code
+ * @apiSuccess (200) {Number} phone_id   ID of the phone number
+ * @apiSuccess (200) {Number} name       Name of phone number
+ * @apiSuccess (200) {Number} number     Digits of phone number
+ * @apiSuccess (200) {Number} extension  Extension digits of phone number
+ * @apiSuccess (200) {Number} country_id Link to associated country
+ * @apiSuccess (200) {Object} country
+ * @apiSuccess (200) {Number} country.country_id  ID of the country
+ * @apiSuccess (200) {String} country.name        Name of country
+ * @apiSuccess (200) {String} country.iso_name    Official ISO name of country
+ * @apiSuccess (200) {String} country.iso_2       ISO Alpha-2 code
+ * @apiSuccess (200) {String} country.iso_3       ISO Alpha-3 code
+ * @apiSuccess (200) {Number} country.iso_numeric ISO numeric code
  *
  * @apiSuccessExample {json} Success-Response:
  *  HTTP/1.1 200 OK
@@ -146,7 +146,7 @@
  */
 
 /**
- * @api {POST} /phones Create a new phone
+ * @api {POST} /phones [POST] /phones
  * @apiName PostPhones
  * @apiGroup Phone
  *
@@ -156,25 +156,25 @@
  *
  * @apiDescription Create a new phone.
  *
- * @apiHeader {String} authorization    Authorization token.
+ * @apiHeader {String} authorization Authorization token
  *
- * @apiParam (body) name
- * @apiParam (body) number
- * @apiParam (body) extension
- * @apiParam (body) country_id
+ * @apiParam (Body) name
+ * @apiParam (Body) number
+ * @apiParam (Body) extension
+ * @apiParam (Body) country_id
  *
- * @apiSuccess (201) {Number}  phone_id   ID of the phone number
- * @apiSuccess (201) {Number}  name       Name of phone number
- * @apiSuccess (201) {Number}  number     Digits of phone number
- * @apiSuccess (201) {Number}  extension  Extension digits of phone number
- * @apiSuccess (201) {Number}  country_id Link to associated country
- * @apiSuccess (201) {Object}  country
- * @apiSuccess (201) {Number}  country.country_id   ID of the country
- * @apiSuccess (201) {String}  country.name         Name of country
- * @apiSuccess (201) {String}  country.iso_name     Official ISO name of country
- * @apiSuccess (201) {String}  country.iso_2        ISO Alpha-2 code
- * @apiSuccess (201) {String}  country.iso_3        ISO Alpha-3 code
- * @apiSuccess (201) {Number}  country.iso_numeric  ISO numeric code
+ * @apiSuccess (201) {Number} phone_id   ID of the phone number
+ * @apiSuccess (201) {Number} name       Name of phone number
+ * @apiSuccess (201) {Number} number     Digits of phone number
+ * @apiSuccess (201) {Number} extension  Extension digits of phone number
+ * @apiSuccess (201) {Number} country_id Link to associated country
+ * @apiSuccess (201) {Object} country
+ * @apiSuccess (201) {Number} country.country_id  ID of the country
+ * @apiSuccess (201) {String} country.name        Name of country
+ * @apiSuccess (201) {String} country.iso_name    Official ISO name of country
+ * @apiSuccess (201) {String} country.iso_2       ISO Alpha-2 code
+ * @apiSuccess (201) {String} country.iso_3       ISO Alpha-3 code
+ * @apiSuccess (201) {Number} country.iso_numeric ISO numeric code
  *
  * @apiSuccessExample {json} Success-Response:
  *  HTTP/1.1 201 OK
@@ -200,7 +200,7 @@
  */
 
 /**
- * @api {DELETE} /phones/:id Delete the phone with `id` from the system
+ * @api {DELETE} /phones/:id [DELETE] /phones/:id
  * @apiName DeletePhonesId
  * @apiGroup Phone
  *
@@ -208,11 +208,13 @@
  *
  * @apiPermission none
  *
- * @apiDescription Delete the phone.
+ * @apiDescription Delete the phone (:id).
  *
- * @apiHeader {String} authorization    Authorization token.
+ * @apiHeader {String} authorization Authorization token
  *
- * @apiSuccess (204) No Content
+ * @apiParam (Param) id ID of the phone
+ *
+ * @apiSuccess (204) NoContent
  *
  * @apiUse UnauthorizedError
  * @apiUse NotFoundError

@@ -21,7 +21,7 @@
  */
 
 /**
- * @api {GET} /addresses Retreive data for all addresses for the current user
+ * @api {GET} /addresses [GET] /addresses
  * @apiName GetAddresses
  * @apiGroup Address
  *
@@ -29,9 +29,9 @@
  *
  * @apiPermission none
  *
- * @apiDescription Retrieves an array of addresses.
+ * @apiDescription Retrieves an array of all addresses for the current user.
  *
- * @apiHeader {String} authorization    Authorization token.
+ * @apiHeader {String} authorization Authorization token
  *
  * @apiSuccess (200) {Object} addresses Array of addresses
  *
@@ -40,7 +40,7 @@
  */
 
 /**
- * @api {GET} /addresses/:id Retreive data of address for current user
+ * @api {GET} /addresses/:id [GET] /addresses/:id
  * @apiName GetAddressesId
  * @apiGroup Address
  *
@@ -48,9 +48,9 @@
  *
  * @apiPermission none
  *
- * @apiDescription Retrieves data of address with `id` for current user.
+ * @apiDescription Retrieves data of address (:id) for current user.
  *
- * @apiHeader {String} authorization    Authorization token.
+ * @apiHeader {String} authorization Authorization token
  *
  * @apiSuccess (200) {Number} address_id   ID of the address
  * @apiSuccess (200) {String} name         Name of address
@@ -112,7 +112,7 @@
  */
 
 /**
- * @api {PATCH} /addresses/:id Updates data of address with `id`
+ * @api {PATCH} /addresses/:id [PATCH] /addresses/:id
  * @apiName PatchAddressesId
  * @apiGroup Address
  *
@@ -120,20 +120,20 @@
  *
  * @apiPermission none
  *
- * @apiDescription Updates data of address. All request body fields are optional. Any fields not specified, are ignored and unchanged.
+ * @apiDescription Updates data of address (:id). All request body fields are optional. Any fields not specified, are ignored and unchanged.
  *
- * @apiHeader {String} authorization    Authorization token.
+ * @apiHeader {String} authorization Authorization token
  *
- * @apiParam (param) id ID of the address
+ * @apiParam (Param) id ID of the address
  *
- * @apiParam (body) name
- * @apiParam (body) address1
- * @apiParam (body) address2
- * @apiParam (body) address3
- * @apiParam (body) address4
- * @apiParam (body) locality
- * @apiParam (body) postal_code
- * @apiParam (body) region_id
+ * @apiParam (Body) name
+ * @apiParam (Body) address1
+ * @apiParam (Body) address2
+ * @apiParam (Body) address3
+ * @apiParam (Body) address4
+ * @apiParam (Body) locality
+ * @apiParam (Body) postal_code
+ * @apiParam (Body) region_id
  *
  * @apiSuccess (200) {Number} address_id   ID of the address
  * @apiSuccess (200) {String} name         Name of address
@@ -196,7 +196,7 @@
  */
 
 /**
- * @api {POST} /addresses Create a new address
+ * @api {POST} /addresses [POST] /addresses
  * @apiName PostAddresses
  * @apiGroup Address
  *
@@ -206,16 +206,16 @@
  *
  * @apiDescription Create a new address.
  *
- * @apiHeader {String} authorization    Authorization token.
+ * @apiHeader {String} authorization Authorization token
  *
- * @apiParam (body) name
- * @apiParam (body) address1
- * @apiParam (body) address2
- * @apiParam (body) address3
- * @apiParam (body) address4
- * @apiParam (body) locality
- * @apiParam (body) postal_code
- * @apiParam (body) region_id
+ * @apiParam (Body) name
+ * @apiParam (Body) address1
+ * @apiParam (Body) address2
+ * @apiParam (Body) address3
+ * @apiParam (Body) address4
+ * @apiParam (Body) locality
+ * @apiParam (Body) postal_code
+ * @apiParam (Body) region_id
  *
  * @apiSuccess (201) {Number} address_id   ID of the address
  * @apiSuccess (201) {String} name         Name of address
@@ -277,7 +277,7 @@
  */
 
 /**
- * @api {DELETE} /addresses/:id Delete the address with `id` from the system
+ * @api {DELETE} /addresses/:id [DELETE] /addresses/:id
  * @apiName DeleteAddressesId
  * @apiGroup Address
  *
@@ -285,11 +285,13 @@
  *
  * @apiPermission none
  *
- * @apiDescription Delete the address.
+ * @apiDescription Delete the address (:id).
  *
- * @apiHeader {String} authorization    Authorization token.
+ * @apiHeader {String} authorization Authorization token
  *
- * @apiSuccess (204) No Content
+ * @apiParam (Param) id ID of the address
+ *
+ * @apiSuccess (204) NoContent
  *
  * @apiUse UnauthorizedError
  * @apiUse NotFoundError
