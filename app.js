@@ -20,6 +20,8 @@
 // TODO: look for modules to continuously monitor/profile the server (npm: look)
 // TODO: look for modules to handle logging throughout the codebase (npm: bunyan)
 
+// TODO: are "catch-all" routes necessary per router? Or one overall catch in app.js?
+
 // -----------------------------------------------------------------------------
 // SETUP
 // -----------------------------------------------------------------------------
