@@ -21,7 +21,7 @@
  */
 
 /**
- * @api {GET} /contacts Retreive contacts
+ * @api {GET} /contacts [GET] /contacts
  * @apiName Contacts
  * @apiGroup Contact
  *

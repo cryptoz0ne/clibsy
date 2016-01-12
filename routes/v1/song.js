@@ -21,7 +21,7 @@
  */
 
 /**
- * @api {GET} /songs Retreive songs
+ * @api {GET} /songs [GET] /songs
  * @apiName Songs
  * @apiGroup Song
  *

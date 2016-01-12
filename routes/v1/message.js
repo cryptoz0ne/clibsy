@@ -21,7 +21,7 @@
  */
 
 /**
- * @api {GET} /messages Retreive messages
+ * @api {GET} /messages [GET] /messages
  * @apiName Messages
  * @apiGroup Message
  *
