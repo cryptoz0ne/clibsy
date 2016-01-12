@@ -22,10 +22,189 @@
 
 /**
  * @api {GET} /messages [GET] /messages
- * @apiName Messages
+ * @apiName GetMessages
  * @apiGroup Message
  *
  * @apiVersion 1.0.0
  *
  * @apiPermission none
+ *
+ * @apiDescription Retrieves an array of all messages for the current user.
+ *
+ * @apiHeader {String} authorization Authorization token
+ *
+ * @apiParam (Query) p (optional) Set to get the given page number (1..n) based on the limit per page; otherwise, the default is page 1
+ * @apiParam (Query) l (optional) Set to determine the limit of message per page; otherwise, the default is a limit of 10
+ *
+ * @apiSuccess (200) {Object} messages Array of messages
+ *
+ * @apiUse UnauthorizedError
+ * @apiUse InternalServerError
+ */
+
+/**
+ * @api {GET} /messages/:id [GET] /messages/:id
+ * @apiName GetMessagesId
+ * @apiGroup Message
+ *
+ * @apiVersion 1.0.0
+ *
+ * @apiPermission none
+ *
+ * @apiDescription Retrieves data of message (:id) for current user.
+ *
+ * @apiHeader {String} authorization Authorization token
+ *
+ * @apiSuccess (200) {Number}  message_id ID of the message
+ * @apiSuccess (200) {String}  subject    Subject of the message
+ * @apiSuccess (200) {String}  body       Body of the message
+ * @apiSuccess (200) {Array}   users      Array of users using the following "user" object layout
+ * @apiSuccess (200) {Object}  users.user
+ * @apiSuccess (200) {Boolean} users.user.is_sender  True if this user is the sender
+ * @apiSuccess (200) {Boolean} users.user.is_flagged True if this user flagged the message
+ * @apiSuccess (200) {Boolean} users.user.is_read    True if this user read the message
+ * @apiSuccess (200) {Number}  users.user.user_id    ID of the user
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *  HTTP/1.1 200 OK
+ *  {
+ *      "message_id": 101,
+ *      "subject": "The New Message Service",
+ *      "body": "This is a really long string that can contain line breaks.\nIn the future, it may support rich text.\nThanks.\nJoe",
+ *      "users": [
+ *          {
+ *              "is_sender": false,
+ *              "is_flagged": true,
+ *              "is_read": true,
+ *              "user_id": 100
+ *          },
+ *          ...
+ *      ]
+ *  }
+ *
+ * @apiUse UnauthorizedError
+ * @apiUse NotFoundError
+ * @apiUse InternalServerError
+ */
+
+/**
+ * @apiIgnore !!! Hide for now; may allow sender to update portions of the message later
+ * @api {PATCH} /messages/:id [PATCH] /messages/:id
+ * @apiName PatchMessagesId
+ * @apiGroup Message
+ *
+ * @apiVersion 1.0.0
+ *
+ * @apiPermission none
+ *
+ * @apiDescription Updates data of message (:id). All request body fields are optional. Any fields not specified, are ignored and unchanged.
+ *
+ * @apiHeader {String} authorization Authorization token
+ *
+ * @apiParam (Param) id ID of the message
+ *
+ * @apiParam (Body) subject
+ * @apiParam (Body) body
+ *
+ * @apiSuccess (200) {Number}  message_id ID of the message
+ * @apiSuccess (200) {String}  subject    Subject of the message
+ * @apiSuccess (200) {String}  body       Body of the message
+ * @apiSuccess (200) {Array}   users      Array of users using the following "user" object layout
+ * @apiSuccess (200) {Object}  users.user
+ * @apiSuccess (200) {Boolean} users.user.is_sender  True if this user is the sender
+ * @apiSuccess (200) {Boolean} users.user.is_flagged True if this user flagged the message
+ * @apiSuccess (200) {Boolean} users.user.is_read    True if this user read the message
+ * @apiSuccess (200) {Number}  users.user.user_id    ID of the user
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *  HTTP/1.1 200 OK
+ *  {
+ *      "message_id": 101,
+ *      "subject": "The New Message Service",
+ *      "body": "This is a really long string that can contain line breaks.\nIn the future, it may support rich text.\nThanks.\nJoe",
+ *      "users": [
+ *          {
+ *              "is_sender": false,
+ *              "is_flagged": true,
+ *              "is_read": true,
+ *              "user_id": 100
+ *          },
+ *          ...
+ *      ]
+ *  }
+ *
+ * @apiUse BadRequestError
+ * @apiUse UnauthorizedError
+ * @apiUse NotFoundError
+ * @apiUse InternalServerError
+ */
+
+/**
+ * @api {POST} /messages [POST] /messages
+ * @apiName PostMessages
+ * @apiGroup Message
+ *
+ * @apiVersion 1.0.0
+ *
+ * @apiPermission none
+ *
+ * @apiDescription Create a new message.
+ *
+ * @apiHeader {String} authorization Authorization token
+ *
+ * @apiParam (Body) subject
+ * @apiParam (Body) body
+ *
+ * @apiSuccess (201) {Number}  message_id ID of the message
+ * @apiSuccess (201) {String}  subject    Subject of the message
+ * @apiSuccess (201) {String}  body       Body of the message
+ * @apiSuccess (201) {Array}   users      Array of users using the following "user" object layout
+ * @apiSuccess (201) {Object}  users.user
+ * @apiSuccess (201) {Boolean} users.user.is_sender  True if this user is the sender
+ * @apiSuccess (201) {Boolean} users.user.is_flagged True if this user flagged the message
+ * @apiSuccess (201) {Boolean} users.user.is_read    True if this user read the message
+ * @apiSuccess (200) {Number}  users.user.user_id    ID of the user
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *  HTTP/1.1 201 OK
+ *  {
+ *      "message_id": 101,
+ *      "subject": "The New Message Service",
+ *      "body": "This is a really long string that can contain line breaks.\nIn the future, it may support rich text.\nThanks.\nJoe",
+ *      "users": [
+ *          {
+ *              "is_sender": false,
+ *              "is_flagged": true,
+ *              "is_read": true,
+ *              "user_id": 100
+ *          },
+ *          ...
+ *      ]
+ *  }
+ *
+ * @apiUse BadRequestError
+ * @apiUse UnauthorizedError
+ * @apiUse InternalServerError
+ */
+
+/**
+ * @api {DELETE} /messages/:id [DELETE] /messages/:id
+ * @apiName DeleteMessagesId
+ * @apiGroup Message
+ *
+ * @apiVersion 1.0.0
+ *
+ * @apiPermission none
+ *
+ * @apiDescription Delete the message (:id).
+ *
+ * @apiHeader {String} authorization Authorization token
+ *
+ * @apiParam (Param) id ID of the message
+ *
+ * @apiSuccess (204) NoContent
+ *
+ * @apiUse UnauthorizedError
+ * @apiUse NotFoundError
+ * @apiUse InternalServerError
  */
