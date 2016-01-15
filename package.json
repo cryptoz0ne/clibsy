@@ -52,6 +52,9 @@
     "clibsy",
     "api"
   ],
+  "engines" : {
+    "node" : "^4.2.4"
+  },
   "readme": "Clibsy server for website and APIs.\n",
   "readmeFilename": "README.md",
   "//": [
