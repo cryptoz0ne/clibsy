@@ -2,14 +2,28 @@
 
 # Clibsy.com
 
-Clibsy.com is the implementation of the Clibsy company web interfaces. This includes the server code for the website and RESTful APIs of Clibsy.
+Clibsy.com is the implementation of the Clibsy company web interfaces. This
+includes the server code for the website and RESTful APIs of Clibsy.
 
 ## Table of Contents
+
+- [Deployment](#deployment)
+- [Commands](#commands)
+    * [NPM](#npm)
+        - [Start](#start)
+        - [Test](#test)
+    * [Makefile](#makefile)
+        - [Lint](#lint)
+        - [Unit Tests](#unit-tests)
+        - [Code Coverage](#code-coverage)
+        - [Documentation](#documentation)
+        - [API Documentation](#api-documentation)
+- [API](#api)
 
 ## Deployment
 
 To deploy the Clibsy.com project, clone the git repository to the machine that
-will act as the server. Make sure a compatable version of [Node.js][1] is
+will act as the server. Make sure a compatible version of [Node.js][1] is
 installed (including npm). The accepted version of Node.js for the project can
 be found in the [package.json](package.json) file.
 
@@ -33,11 +47,11 @@ sets assume the use of a CLI tool.
 
 ### NPM
 
-The NPM commands cover a couple standard calls `start` and `test`.
+The NPM commands cover a couple standard commands `start` and `test`.
 
 #### Start
 
-To start the sever, run the following command:
+To start the server, run the following command:
 
 ```
 npm start
@@ -55,9 +69,9 @@ Note: Dev dependencies must be installed for this command to function properly.
 
 ### Makefile
 
-The makefile provides and extend list of commands to run for the project. These
-commands cover tasks such as [Linting](), [Testing](), [Code Coverage](), and
-[Documentation]().
+The makefile provides an extended list of commands to run for the project. These
+commands cover tasks such as [Linting](#lint), [Testing](#unit-tests),
+[Code Coverage](#code-coverage), and [Documentation](#documentation-generator).
 
 #### Lint
 
@@ -80,31 +94,31 @@ of the production source code of the base project. This command is the following
 make lint-test
 ```
 
-#### Unit tests
+#### Unit Tests
 
 The unit tests in the project use many packages to accomplish the task. The
-major packages that handle unit testing are [Mocha][], [Chai][], and [Sinon][]
+major packages that handle unit testing are [Mocha][4], [Chai][5], and [Sinon][6]
 with a complement of supporting packages and plugins. The style of the unit
 test code is Behavior-Driven Development (BDD). To learn more about BDD, view
-the [Wikipedia article][4]. The command to run the unit tests is the following:
+the [Wikipedia article][7]. The command to run the unit tests is the following:
 
 ```
 make test
 ```
 
-#### Code coverage
+#### Code Coverage
 
 The unit tests are also run as part of code coverage. Code coverage is
-accomplished using [Istanbul][]. The command to run code coverage is the
+accomplished using [Istanbul][8]. The command to run code coverage is the
 following:
 
 ```
 make test-cov
 ```
 
-#### Documentation Generator
+#### Documentation
 
-The source code is self documented and uses [JSDoc][] to parse the code and
+The source code is self documented and uses [JSDoc][9] to parse the code and
 produce the documentation itself. The command to generate the documentation is
 the following:
 
@@ -112,11 +126,11 @@ the following:
 make docs
 ```
 
-#### API Documentation Generator
+#### API Documentation
 
 API documentation is generated using a different tool than general source code
 documentation as it is intended for a different audience. The API documentation
-is generated using [APIDoc][]. The command to generate the API documentation is
+is generated using [APIDoc][10]. The command to generate the API documentation is
 the following:
 
 ```
@@ -127,12 +141,17 @@ make docs-api
 
 The current version of the API is v1. Refer to the API documentation for
 information regarding individual API endpoints. To generate the documentation,
-see command details in [API Documentation Generator](#api-documentation-generator)
-section.
+see command details in [API Documentation](#api-documentation) section.
 
 © 2015 Clibsy LLC
 
-[1]: [https://nodejs.org/]
-[2]: [http://eslint.org/]
-[3]: [https://en.wikipedia.org/wiki/Lint_(software)]
-[4]: [https://en.wikipedia.org/wiki/Behavior-driven_development]
+[1]:  https://nodejs.org/
+[2]:  http://eslint.org/
+[3]:  https://en.wikipedia.org/wiki/Lint_(software)
+[4]:  https://mochajs.org/
+[5]:  http://chaijs.com/
+[6]:  http://sinonjs.org/
+[7]:  https://en.wikipedia.org/wiki/Behavior-driven_development
+[8]:  https://gotwarlost.github.io/istanbul/
+[9]:  http://usejsdoc.org/
+[10]: http://apidocjs.com/
