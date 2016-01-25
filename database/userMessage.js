@@ -21,17 +21,22 @@ module.exports = function defineUserMessage(sequelize, DataTypes) {
         is_sender: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
-            defaultValue: true
+            defaultValue: false
+        },
+        is_edited: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
         },
         is_flagged: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
-            defaultValue: true
+            defaultValue: false
         },
         is_read: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
-            defaultValue: true
+            defaultValue: false
         }
         /*eslint-enable camelcase, new-cap */
     }, {
