@@ -68,7 +68,7 @@
  * @apiSuccess (200) {Boolean} users.messageUser.is_read    True if this user read the message
  * @apiSuccess (200) {Number}  users.messageUser.message_id ID of the message
  * @apiSuccess (200) {Number}  users.messageUser.user_id    ID of the user
- * @apiSuccess (200) {Number}  users.messageUser.user       Full user object (optional with "u" parameter)
+ * @apiSuccess (200) {Object}  users.messageUser.user       Full user object (optional with "u" parameter)
  *
  * @apiSuccessExample {json} Success-Response:
  *  HTTP/1.1 200 OK

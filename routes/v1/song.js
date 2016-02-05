@@ -22,7 +22,7 @@
 
 /**
  * @api {GET} /songs [GET] /songs
- * @apiName Songs
+ * @apiName GetSongs
  * @apiGroup Song
  *
  * @apiVersion 1.0.0
