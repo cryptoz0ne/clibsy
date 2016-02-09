@@ -159,7 +159,6 @@ module.exports = function defineAddress(sequelize, DataTypes) {
             associate(models) {
                 Address.belongsTo(models.Region,  { foreignKey: 'region_id' });
                 Address.belongsTo(models.User,    { foreignKey: 'user_id' });
-                Address.belongsTo(models.Company, { foreignKey: 'company_id' });
                 Address.belongsTo(models.Contact, { foreignKey: 'contact_id' });
             },
             extractName(db, value) {

@@ -111,8 +111,6 @@ module.exports = function defineCompany(sequelize, DataTypes) {
         },
         classMethods: {
             associate(models) {
-                Company.hasOne(models.Address,      { as: 'address',  foreignKey: 'company_id' });
-                Company.hasOne(models.Phone,        { as: 'phone',    foreignKey: 'company_id' });
                 Company.hasMany(models.Contact,     { as: 'contacts', foreignKey: 'company_id' });
                 Company.hasMany(models.UserProfile, { as: 'profiles', foreignKey: 'company_id' });
             },
