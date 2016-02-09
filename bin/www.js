@@ -9,7 +9,7 @@
 //
 // FILE: www.js
 //
-// DESCRIPTION: {{description}}
+// DESCRIPTION: Main entry point of the package and starts the HTTP server.
 //
 // AUTHOR: Joe Kramer joe@clibsy.com 2015/10/18
 //******************************************************************************

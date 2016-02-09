@@ -8,7 +8,8 @@
 //
 // FILE: app.js
 //
-// DESCRIPTION: {{description}}
+// DESCRIPTION: Central setup and configuration file including express and
+//              database initialization.
 //
 // AUTHOR: Joe Kramer joe@clibsy.com 2015/10/18
 //******************************************************************************
