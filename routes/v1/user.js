@@ -34,7 +34,7 @@
  *
  * @apiHeader {String} authorization Authorization token
  *
- * @apiSuccess (200) {Object} users Array of users
+ * @apiSuccess (200) {Array} users Array of users
  *
  * @apiUse UnauthorizedError
  * @apiUse NotFoundError

@@ -36,7 +36,7 @@
  * @apiParam (Query) p (optional) Set to get the given page number (1..n) based on the limit per page; otherwise, the default is page 1
  * @apiParam (Query) l (optional) Set to determine the limit of messages per page; otherwise, the default is a limit of 10
  *
- * @apiSuccess (200) {Object} messages Array of messages
+ * @apiSuccess (200) {Array} messages Array of messages
  *
  * @apiUse UnauthorizedError
  * @apiUse InternalServerError

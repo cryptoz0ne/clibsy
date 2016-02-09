@@ -31,7 +31,7 @@
  *
  * @apiDescription Retrieves an array of all countries available.
  *
- * @apiSuccess (200) {Object} countries Array of countries
+ * @apiSuccess (200) {Array} countries Array of countries
  *
  * @apiUse InternalServerError
  */

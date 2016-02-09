@@ -33,7 +33,7 @@
  *
  * @apiHeader {String} authorization Authorization token
  *
- * @apiSuccess (200) {Object} phones Array of phones
+ * @apiSuccess (200) {Array} phones Array of phones
  *
  * @apiUse UnauthorizedError
  * @apiUse InternalServerError

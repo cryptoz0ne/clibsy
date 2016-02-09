@@ -33,7 +33,7 @@
  *
  * @apiHeader {String} authorization Authorization token
  *
- * @apiSuccess (200) {Object} addresses Array of addresses
+ * @apiSuccess (200) {Array} addresses Array of addresses
  *
  * @apiUse UnauthorizedError
  * @apiUse InternalServerError
