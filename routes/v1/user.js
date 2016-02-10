@@ -1,4 +1,4 @@
-//******************************************************************************
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Copyright (c) 2015-2016 Clibsy, LLC -- All rights reserved
 //
 // Unauthorized copying of this file, via any medium, is strictly prohibited.
@@ -11,7 +11,7 @@
 // DESCRIPTION: Definition of the user API endpoints.
 //
 // AUTHOR: Joe Kramer joe@clibsy.com 2015/11/10
-//******************************************************************************
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 'use strict';
 
 /**
@@ -34,7 +34,7 @@
  *
  * @apiHeader {String} authorization Authorization token
  *
- * @apiSuccess (200) {Object} users Array of users
+ * @apiSuccess (200) {Array} users Array of users
  *
  * @apiUse UnauthorizedError
  * @apiUse NotFoundError
@@ -84,11 +84,11 @@
  * @apiSuccess (200) {Number}  profile.phone_id   Link to default phone number information
  * @apiSuccess (200) {Object}  profile.company
  * @apiSuccess (200) {Number}  profile.company.company_id ID of the company
- * @apiSuccess (200) {String}  profile.company.name       Name of company
+ * @apiSuccess (200) {String}  profile.company.name       Name of the company
  * @apiSuccess (200) {String}  profile.company.logo_image URL string pointing to the company logo image
  * @apiSuccess (200) {String}  profile.company.email      Email address of company
- * @apiSuccess (200) {String}  profile.company.website    Website of company
- * @apiSuccess (200) {String}  profile.company.desc       Description of company
+ * @apiSuccess (200) {String}  profile.company.website    Website URL of the company
+ * @apiSuccess (200) {String}  profile.company.desc       Description of the company
  * @apiSuccess (200) {Object}  profile.address
  * @apiSuccess (200) {Number}  profile.address.address_id  ID of the address
  * @apiSuccess (200) {String}  profile.address.name        Name of address
@@ -257,11 +257,11 @@
  * @apiSuccess (200) {Number}  profile.phone_id   Link to default phone number information
  * @apiSuccess (200) {Object}  profile.company
  * @apiSuccess (200) {Number}  profile.company.company_id ID of the company
- * @apiSuccess (200) {String}  profile.company.name       Name of company
+ * @apiSuccess (200) {String}  profile.company.name       Name of the company
  * @apiSuccess (200) {String}  profile.company.logo_image URL string pointing to the company logo image
  * @apiSuccess (200) {String}  profile.company.email      Email address of company
- * @apiSuccess (200) {String}  profile.company.website    Website of company
- * @apiSuccess (200) {String}  profile.company.desc       Description of company
+ * @apiSuccess (200) {String}  profile.company.website    Website URL of the company
+ * @apiSuccess (200) {String}  profile.company.desc       Description of the company
  * @apiSuccess (200) {Object}  profile.address
  * @apiSuccess (200) {Number}  profile.address.address_id  ID of the address
  * @apiSuccess (200) {String}  profile.address.name        Name of address
@@ -336,11 +336,11 @@
  * @apiSuccess (200) {Number}  phone_id   Link to default phone number information
  * @apiSuccess (200) {Object}  company
  * @apiSuccess (200) {Number}  company.company_id ID of the company
- * @apiSuccess (200) {String}  company.name       Name of company
+ * @apiSuccess (200) {String}  company.name       Name of the company
  * @apiSuccess (200) {String}  company.logo_image URL string pointing to the company logo image
  * @apiSuccess (200) {String}  company.email      Email address of company
- * @apiSuccess (200) {String}  company.website    Website of company
- * @apiSuccess (200) {String}  company.desc       Description of company
+ * @apiSuccess (200) {String}  company.website    Website URL of the company
+ * @apiSuccess (200) {String}  company.desc       Description of the company
  * @apiSuccess (200) {Object}  address
  * @apiSuccess (200) {Number}  address.address_id  ID of the address
  * @apiSuccess (200) {String}  address.name        Name of address
@@ -378,7 +378,7 @@
  * @apiSuccess (200) {String}  phone.country.iso_2       ISO Alpha-2 code
  * @apiSuccess (200) {String}  phone.country.iso_3       ISO Alpha-3 code
  * @apiSuccess (200) {Number}  phone.country.iso_numeric ISO numeric code
- * 
+ *
  * @apiSuccessExample {json} Success-Response:
  *  HTTP/1.1 200 OK
  *  {
@@ -475,11 +475,11 @@
  * @apiSuccess (200) {Number}  phone_id   Link to default phone number information
  * @apiSuccess (200) {Object}  company
  * @apiSuccess (200) {Number}  company.company_id ID of the company
- * @apiSuccess (200) {String}  company.name       Name of company
+ * @apiSuccess (200) {String}  company.name       Name of the company
  * @apiSuccess (200) {String}  company.logo_image URL string pointing to the company logo image
  * @apiSuccess (200) {String}  company.email      Email address of company
- * @apiSuccess (200) {String}  company.website    Website of company
- * @apiSuccess (200) {String}  company.desc       Description of company
+ * @apiSuccess (200) {String}  company.website    Website URL of the company
+ * @apiSuccess (200) {String}  company.desc       Description of the company
  * @apiSuccess (200) {Object}  address
  * @apiSuccess (200) {Number}  address.address_id  ID of the address
  * @apiSuccess (200) {String}  address.name        Name of address
@@ -517,7 +517,7 @@
  * @apiSuccess (200) {String}  phone.country.iso_2       ISO Alpha-2 code
  * @apiSuccess (200) {String}  phone.country.iso_3       ISO Alpha-3 code
  * @apiSuccess (200) {Number}  phone.country.iso_numeric ISO numeric code
- * 
+ *
  * @apiSuccessExample {json} Success-Response:
  *  HTTP/1.1 200 OK
  *  {
@@ -740,11 +740,11 @@
  * @apiSuccess (200) {Number}  phone_id   Link to default phone number information
  * @apiSuccess (200) {Object}  company
  * @apiSuccess (200) {Number}  company.company_id ID of the company
- * @apiSuccess (200) {String}  company.name       Name of company
+ * @apiSuccess (200) {String}  company.name       Name of the company
  * @apiSuccess (200) {String}  company.logo_image URL string pointing to the company logo image
  * @apiSuccess (200) {String}  company.email      Email address of company
- * @apiSuccess (200) {String}  company.website    Website of company
- * @apiSuccess (200) {String}  company.desc       Description of company
+ * @apiSuccess (200) {String}  company.website    Website URL of the company
+ * @apiSuccess (200) {String}  company.desc       Description of the company
  * @apiSuccess (200) {Object}  address
  * @apiSuccess (200) {Number}  address.address_id  ID of the address
  * @apiSuccess (200) {String}  address.name        Name of address

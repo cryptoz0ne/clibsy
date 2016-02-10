@@ -1,4 +1,4 @@
-//******************************************************************************
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Copyright (c) 2015-2016 Clibsy, LLC -- All rights reserved
 //
 // Unauthorized copying of this file, via any medium, is strictly prohibited.
@@ -14,7 +14,7 @@
 //              http://www.itu.int/ITU-T/recommendations/rec.aspx?rec=E.164
 //
 // AUTHOR: Joe Kramer joe@clibsy.com 2015/10/18
-//******************************************************************************
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 'use strict';
 
 var PHONE_NAME_MAX_LENGTH = 100;
@@ -84,7 +84,6 @@ module.exports = function definePhone(sequelize, DataTypes) {
             associate(models) {
                 Phone.belongsTo(models.Country, { foreighKey: 'country_id' });
                 Phone.belongsTo(models.User,    { foreignKey: 'user_id' });
-                Phone.belongsTo(models.Company, { foreighKey: 'company_id' });
                 Phone.belongsTo(models.Contact, { foreignKey: 'contact_id' });
             },
             extractName(db, value) {

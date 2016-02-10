@@ -1,4 +1,4 @@
-//******************************************************************************
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Copyright (c) 2015-2016 Clibsy, LLC -- All rights reserved
 //
 // Unauthorized copying of this file, via any medium, is strictly prohibited.
@@ -14,7 +14,7 @@
 //              https://en.wikipedia.org/wiki/ISO_3166-2
 //
 // AUTHOR: Joe Kramer joe@clibsy.com 2015/11/26
-//******************************************************************************
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 'use strict';
 
 var REGION_NAME_MAX_LENGTH = 255;

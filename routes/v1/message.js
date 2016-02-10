@@ -1,4 +1,4 @@
-//******************************************************************************
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Copyright (c) 2015-2016 Clibsy, LLC -- All rights reserved
 //
 // Unauthorized copying of this file, via any medium, is strictly prohibited.
@@ -11,7 +11,7 @@
 // DESCRIPTION: Definition of the message API endpoints.
 //
 // AUTHOR: Joe Kramer joe@clibsy.com 2015/11/10
-//******************************************************************************
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 'use strict';
 
 /**
@@ -34,9 +34,9 @@
  * @apiHeader {String} authorization Authorization token
  *
  * @apiParam (Query) p (optional) Set to get the given page number (1..n) based on the limit per page; otherwise, the default is page 1
- * @apiParam (Query) l (optional) Set to determine the limit of message per page; otherwise, the default is a limit of 10
+ * @apiParam (Query) l (optional) Set to determine the limit of messages per page; otherwise, the default is a limit of 10
  *
- * @apiSuccess (200) {Object} messages Array of messages
+ * @apiSuccess (200) {Array} messages Array of messages
  *
  * @apiUse UnauthorizedError
  * @apiUse InternalServerError
@@ -68,7 +68,7 @@
  * @apiSuccess (200) {Boolean} users.messageUser.is_read    True if this user read the message
  * @apiSuccess (200) {Number}  users.messageUser.message_id ID of the message
  * @apiSuccess (200) {Number}  users.messageUser.user_id    ID of the user
- * @apiSuccess (200) {Number}  users.messageUser.user       Full user object (optional with "u" parameter)
+ * @apiSuccess (200) {Object}  users.messageUser.user       Full user object (optional with "u" parameter)
  *
  * @apiSuccessExample {json} Success-Response:
  *  HTTP/1.1 200 OK
@@ -113,11 +113,11 @@
  *
  * @apiParam (Param) id ID of the message
  *
- * @apiParam (Body) {String}       subject
- * @apiParam (Body) {String}       body
- * @apiParam (Body) {Array|Number} tos[]
- * @apiParam (Body) {Boolean}      flagged
- * @apiParam (Body) {Boolean}      read
+ * @apiParam (Body) {String}  subject
+ * @apiParam (Body) {String}  body
+ * @apiParam (Body) {Array}   tos[]     TODO: allow single entry as "Number"
+ * @apiParam (Body) {Boolean} flagged
+ * @apiParam (Body) {Boolean} read
  *
  * @apiSuccess (200) {Number}  message_id ID of the message
  * @apiSuccess (200) {String}  subject    Subject of the message
@@ -168,9 +168,9 @@
  *
  * @apiHeader {String} authorization Authorization token
  *
- * @apiParam (Body) {String}       subject
- * @apiParam (Body) {String}       body
- * @apiParam (Body) {Array|Number} tos[]
+ * @apiParam (Body) {String} subject
+ * @apiParam (Body) {String} body
+ * @apiParam (Body) {Array}  tos[]     TODO: allow single entry as "Number"
  *
  * @apiSuccess (201) {Number}  message_id ID of the message
  * @apiSuccess (201) {String}  subject    Subject of the message

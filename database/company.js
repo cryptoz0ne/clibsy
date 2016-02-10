@@ -1,4 +1,4 @@
-//******************************************************************************
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Copyright (c) 2015-2016 Clibsy, LLC -- All rights reserved
 //
 // Unauthorized copying of this file, via any medium, is strictly prohibited.
@@ -12,7 +12,7 @@
 //              objects.
 //
 // AUTHOR: Joe Kramer joe@clibsy.com 2015/11/30
-//******************************************************************************
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 'use strict';
 
 var COMPANY_NAME_MAX_LENGTH = 100;
@@ -111,8 +111,6 @@ module.exports = function defineCompany(sequelize, DataTypes) {
         },
         classMethods: {
             associate(models) {
-                Company.hasOne(models.Address,      { as: 'address',  foreignKey: 'company_id' });
-                Company.hasOne(models.Phone,        { as: 'phone',    foreignKey: 'company_id' });
                 Company.hasMany(models.Contact,     { as: 'contacts', foreignKey: 'company_id' });
                 Company.hasMany(models.UserProfile, { as: 'profiles', foreignKey: 'company_id' });
             },
