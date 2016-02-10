@@ -113,11 +113,11 @@
  *
  * @apiParam (Param) id ID of the message
  *
- * @apiParam (Body) {String}       subject
- * @apiParam (Body) {String}       body
- * @apiParam (Body) {Array|Number} tos[]
- * @apiParam (Body) {Boolean}      flagged
- * @apiParam (Body) {Boolean}      read
+ * @apiParam (Body) {String}  subject
+ * @apiParam (Body) {String}  body
+ * @apiParam (Body) {Array}   tos[]     TODO: allow single entry as "Number"
+ * @apiParam (Body) {Boolean} flagged
+ * @apiParam (Body) {Boolean} read
  *
  * @apiSuccess (200) {Number}  message_id ID of the message
  * @apiSuccess (200) {String}  subject    Subject of the message
@@ -168,9 +168,9 @@
  *
  * @apiHeader {String} authorization Authorization token
  *
- * @apiParam (Body) {String}       subject
- * @apiParam (Body) {String}       body
- * @apiParam (Body) {Array|Number} tos[]
+ * @apiParam (Body) {String} subject
+ * @apiParam (Body) {String} body
+ * @apiParam (Body) {Array}  tos[]     TODO: allow single entry as "Number"
  *
  * @apiSuccess (201) {Number}  message_id ID of the message
  * @apiSuccess (201) {String}  subject    Subject of the message
