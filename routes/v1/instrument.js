@@ -6,26 +6,16 @@
 //
 // PROJECT: clibsy.com
 //
-// FILE: song.js
+// FILE: instrument.js
 //
-// DESCRIPTION: Definition of the song API endpoints.
+// DESCRIPTION: Definition of the instrument API endpoints.
 //
-// AUTHOR: Joe Kramer joe@clibsy.com 2015/11/10
+// AUTHOR: Joe Kramer joe@clibsy.com 2015/01/12
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 'use strict';
 
 /**
- * @apiDefine Song Song
+ * @apiDefine Instrument Instrument
  *
- * API endpoints that interact with song resources.
- */
-
-/**
- * @api {GET} /songs [GET] /songs
- * @apiName GetSongs
- * @apiGroup Song
- *
- * @apiVersion 1.0.0
- *
- * @apiPermission none
+ * API endpoints that interact with instrument resources.
  */

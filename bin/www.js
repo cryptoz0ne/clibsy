@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-//******************************************************************************
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Copyright (c) 2015-2016 Clibsy, LLC -- All rights reserved
 //
 // Unauthorized copying of this file, via any medium, is strictly prohibited.
@@ -9,10 +9,10 @@
 //
 // FILE: www.js
 //
-// DESCRIPTION: {{description}}
+// DESCRIPTION: Main entry point of the package and starts the HTTP server.
 //
 // AUTHOR: Joe Kramer joe@clibsy.com 2015/10/18
-//******************************************************************************
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // Node Modules
 var http = require('http');

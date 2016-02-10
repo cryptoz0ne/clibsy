@@ -34,7 +34,7 @@
     "sequelize": "^3.8.0"
   },
   "devDependencies": {
-    "apidoc": "^0.13.1",
+    "apidoc": "^0.14.0",
     "chai": "^3.2.0",
     "chai-as-promised": "^5.1.0",
     "chai-passport-strategy": "^0.2.0",
@@ -52,6 +52,9 @@
     "clibsy",
     "api"
   ],
+  "engines" : {
+    "node" : "^4.2.4"
+  },
   "readme": "Clibsy server for website and APIs.\n",
   "readmeFilename": "README.md",
   "//": [

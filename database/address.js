@@ -1,4 +1,4 @@
-//******************************************************************************
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Copyright (c) 2015-2016 Clibsy, LLC -- All rights reserved
 //
 // Unauthorized copying of this file, via any medium, is strictly prohibited.
@@ -12,7 +12,7 @@
 //              objects.
 //
 // AUTHOR: Joe Kramer joe@clibsy.com 2015/10/18
-//******************************************************************************
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 'use strict';
 
 var ADDRESS_NAME_MAX_LENGTH = 100;
@@ -159,7 +159,6 @@ module.exports = function defineAddress(sequelize, DataTypes) {
             associate(models) {
                 Address.belongsTo(models.Region,  { foreignKey: 'region_id' });
                 Address.belongsTo(models.User,    { foreignKey: 'user_id' });
-                Address.belongsTo(models.Company, { foreignKey: 'company_id' });
                 Address.belongsTo(models.Contact, { foreignKey: 'contact_id' });
             },
             extractName(db, value) {
